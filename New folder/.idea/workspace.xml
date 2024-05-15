@@ -6,6 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="0708bc9e-9394-4bab-88fb-65a74709b6e2" name="Changes" comment="Added logger and commented some stuff">
       <change beforePath="$PROJECT_DIR$/src/main/java/de/heaal/eaf/algorithm/GeneticAlgorithm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/heaal/eaf/algorithm/GeneticAlgorithm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/heaal/eaf/algorithm/HillClimbingAlgorithm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/heaal/eaf/algorithm/HillClimbingAlgorithm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/de/heaal/eaf/algorithm/GeneticAlgorithm.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/de/heaal/eaf/algorithm/GeneticAlgorithm.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,12 +30,12 @@
     &quot;assignee&quot;: &quot;DanyBoi22&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/DanyBoi22/WP_EA_S6.git&quot;,
-    &quot;accountId&quot;: &quot;9a36aab8-10a0-4b01-a0c5-a018c431c14a&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/DanyBoi22/WP_EA_Shared.git",
+    "accountId": "9a36aab8-10a0-4b01-a0c5-a018c431c14a"
   }
-}</component>
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 0
@@ -46,25 +48,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.HillClimbing.executor&quot;: &quot;Run&quot;,
-    &quot;Application.TestGenetic.executor&quot;: &quot;Run&quot;,
-    &quot;Application.TestHillClimbing.executor&quot;: &quot;Run&quot;,
-    &quot;Application.TestRunner.executor&quot;: &quot;Run&quot;,
-    &quot;Application.main.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.GeneticAlgorithmTest.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.HillClimbing.executor": "Run",
+    "Application.TestGenetic.executor": "Run",
+    "Application.TestHillClimbing.executor": "Run",
+    "Application.TestRunner.executor": "Run",
+    "Application.main.executor": "Run",
+    "JUnit.GeneticAlgorithmTest.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "dany",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="de.heaal.eaf.crossover" />
@@ -72,7 +74,7 @@
       <recent name="de.heaal.eaf.testbench" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.TestGenetic">
+  <component name="RunManager" selected="Application.TestHillClimbing">
     <configuration name="TestGenetic" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="de.heaal.eaf.testbench.TestGenetic" />
       <module name="EAFramework_SoSe23" />
@@ -142,10 +144,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.TestHillClimbing" />
         <item itemvalue="Application.TestGenetic" />
         <item itemvalue="JUnit.GeneticAlgorithmTest" />
         <item itemvalue="Application.TestRunner" />
-        <item itemvalue="Application.TestHillClimbing" />
         <item itemvalue="Application.main" />
       </list>
     </recent_temporary>
@@ -173,6 +175,7 @@
       <workItem from="1715552250940" duration="16954000" />
       <workItem from="1715704477413" duration="3297000" />
       <workItem from="1715769163886" duration="584000" />
+      <workItem from="1715770516542" duration="651000" />
     </task>
     <task id="LOCAL-00001" summary="first steps into framework">
       <option name="closed" value="true" />

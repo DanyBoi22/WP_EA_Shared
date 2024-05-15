@@ -24,15 +24,15 @@
 
 package de.heaal.eaf.algorithm;
 
-import de.heaal.eaf.base.Algorithm;
-import de.heaal.eaf.base.GenericIndividual;
+import de.heaal.eaf.base.*;
 import de.heaal.eaf.evaluation.ComparatorIndividual;
-import de.heaal.eaf.base.Individual;
-import de.heaal.eaf.base.IndividualFactory;
 import de.heaal.eaf.mutation.Mutation;
 import de.heaal.eaf.mutation.MutationOptions;
 // import de.heaal.eaf.mutation.MutationOptions;
 import java.util.Comparator;
+
+import static de.heaal.eaf.logger.Logger.createLogFile;
+import static de.heaal.eaf.logger.Logger.logLineToCSV;
 
 /**
  * Implementation of the Hill Climbing algorithm.
@@ -43,6 +43,7 @@ public class HillClimbingAlgorithm extends Algorithm {
 
     private final IndividualFactory indFac;
     private final ComparatorIndividual terminationCriterion;
+    private final String logFile;
 
     public HillClimbingAlgorithm(float[] min, float[] max, 
             Comparator<Individual> comparator, Mutation mutator, 
@@ -51,11 +52,19 @@ public class HillClimbingAlgorithm extends Algorithm {
         super(comparator, mutator);
         this.indFac = new ParticleFactory(min, max);
         this.terminationCriterion = terminationCriterion;
+
+        // Create the log file
+        // ToDo: maybe log the configuration data into the name of logfile aswell
+        this.logFile = createLogFile("data/hca.csv");
+        if(logFile == null){
+            throw new NullPointerException("log file is null");
+        }
     }
     
     @Override
     public void nextGeneration() {
         super.nextGeneration();
+        logData(logFile);
 
         // HIER KÖNNTE DER ALGORITHMUS-LOOP STEHEN
         // mutating b*
@@ -67,6 +76,17 @@ public class HillClimbingAlgorithm extends Algorithm {
         if(comparator.compare(population.get(0), rndInd) < 0){
             population.set(0, rndInd);
         }
+    }
+
+    /**
+     * Log fitness of the individual to the log file
+     *
+     * @param logFile
+     */
+    public void logData(String logFile) {
+        Float[] data = new Float[1];
+        data[0] = population.get(0).getCache();
+        logLineToCSV(data,logFile);
     }
   
     @Override
@@ -85,6 +105,7 @@ public class HillClimbingAlgorithm extends Algorithm {
             nextGeneration();
             count++;
         }
+        logData(logFile);
         System.out.println("Best genome: " + population.get(0).getGenome());
         System.out.println("Cache: " + population.get(0).getCache());
     }   
