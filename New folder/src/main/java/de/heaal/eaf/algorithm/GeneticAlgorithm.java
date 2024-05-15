@@ -144,7 +144,8 @@ public class GeneticAlgorithm extends Algorithm {
     public void logData(String logFile) {
         Float[] data = new Float[population.size()];
         for(int i = 0; i < population.size(); i++) {
-            data[i] = fitnessFunction.apply(population.get(i));
+            data[i] = population.get(i).getCache();
+            //data[i] = fitnessFunction.apply(population.get(i));
         }
         logLineToCSV(data,logFile);
     }
@@ -195,6 +196,7 @@ public class GeneticAlgorithm extends Algorithm {
 
         //Comparator<Individual> cmp = new MinimizeFunctionComparator(fitnessFunction);
         population.sort(comparator);
+        logData(logFile);
 
         System.out.println("Best Genome: " + population.get(0).getGenome());
         System.out.println("Cache: " + population.get(0).getCache());
