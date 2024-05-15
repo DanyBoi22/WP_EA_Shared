@@ -25,7 +25,9 @@
 package de.heaal.eaf.algorithm;
 
 import de.heaal.eaf.base.*;
+import de.heaal.eaf.crossover.AverageCrossover;
 import de.heaal.eaf.crossover.Combination;
+import de.heaal.eaf.crossover.SinglePointCrossover;
 import de.heaal.eaf.evaluation.ComparatorIndividual;
 import de.heaal.eaf.evaluation.MinimizeFunctionComparator;
 import de.heaal.eaf.mutation.Mutation;
@@ -80,9 +82,21 @@ public class GeneticAlgorithm extends Algorithm {
         // Well... fitness function
         this.fitnessFunction = FitnessPosCoordinates;
 
-        // Create the log file
-        // ToDo: maybe log the configuration data into the name of logfile aswell
-        this.logFile = createLogFile("data/ge.csv");
+        // Create the log file with configuration data in the name
+        StringBuilder sb = new StringBuilder();
+        sb.append("data/ge").append("_");
+        sb.append(populationSize).append("_");
+        if(combination.getClass() == AverageCrossover.class){
+            sb.append("avg");
+        } else if (combination.getClass() == SinglePointCrossover.class) {
+            sb.append("rng");
+        }
+        sb.append("_");
+        sb.append(mutationRate).append("_");
+        sb.append(numberElitism).append("_");
+        sb.append(useElitism);
+        sb.append(".csv");
+        this.logFile = createLogFile(sb.toString());
         if(logFile == null){
             throw new NullPointerException("log file is null");
         }
