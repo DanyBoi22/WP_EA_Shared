@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="0708bc9e-9394-4bab-88fb-65a74709b6e2" name="Changes" comment="Added logger and commented some stuff">
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/heaal/eaf/algorithm/GeneticAlgorithm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/heaal/eaf/algorithm/GeneticAlgorithm.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;DanyBoi22&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/DanyBoi22/WP_EA_S6.git&quot;,
+    &quot;accountId&quot;: &quot;9a36aab8-10a0-4b01-a0c5-a018c431c14a&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 0
+}</component>
+  <component name="ProjectId" id="2fQPRXk36s3bj8ekUV5xiBFOGuf" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.HillClimbing.executor&quot;: &quot;Run&quot;,
+    &quot;Application.TestGenetic.executor&quot;: &quot;Run&quot;,
+    &quot;Application.TestHillClimbing.executor&quot;: &quot;Run&quot;,
+    &quot;Application.TestRunner.executor&quot;: &quot;Run&quot;,
+    &quot;Application.main.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.GeneticAlgorithmTest.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="de.heaal.eaf.crossover" />
+      <recent name="de.heaal.eaf.algorithm" />
+      <recent name="de.heaal.eaf.testbench" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.TestGenetic">
+    <configuration name="TestGenetic" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="de.heaal.eaf.testbench.TestGenetic" />
+      <module name="EAFramework_SoSe23" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="de.heaal.eaf.unittest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestHillClimbing" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="de.heaal.eaf.testbench.TestHillClimbing" />
+      <module name="EAFramework_SoSe23" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="de.heaal.eaf.unittest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestRunner" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="de.heaal.eaf.unittest.TestRunner" />
+      <module name="EAFramework_SoSe23" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="de.heaal.eaf.unittest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="A1.main" />
+      <module name="EAFramework_SoSe23" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="A1.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GeneticAlgorithmTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="EAFramework_SoSe23" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="de.heaal.eaf.unittest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="de.heaal.eaf.unittest" />
+      <option name="MAIN_CLASS_NAME" value="de.heaal.eaf.unittest.GeneticAlgorithmTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.TestGenetic" />
+        <item itemvalue="JUnit.GeneticAlgorithmTest" />
+        <item itemvalue="Application.TestRunner" />
+        <item itemvalue="Application.TestHillClimbing" />
+        <item itemvalue="Application.main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
+        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0708bc9e-9394-4bab-88fb-65a74709b6e2" name="Changes" comment="" />
+      <created>1713730323944</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1713730323944</updated>
+      <workItem from="1713730325261" duration="2445000" />
+      <workItem from="1713954792255" duration="7140000" />
+      <workItem from="1714053621564" duration="1886000" />
+      <workItem from="1715441124479" duration="11659000" />
+      <workItem from="1715552250940" duration="16954000" />
+      <workItem from="1715704477413" duration="3297000" />
+      <workItem from="1715769163886" duration="584000" />
+    </task>
+    <task id="LOCAL-00001" summary="first steps into framework">
+      <option name="closed" value="true" />
+      <created>1713732717491</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1713732717491</updated>
+    </task>
+    <task id="LOCAL-00002" summary="implemented genetic algo tho not sure if its correct">
+      <option name="closed" value="true" />
+      <created>1715534567668</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1715534567668</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Implemented some JUnit tests. Found problems. Gotta fix em">
+      <option name="closed" value="true" />
+      <created>1715555487439</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1715555487439</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Fixed sorting. The genetic algorithm runs mostly correctly now. Added test of average crossover">
+      <option name="closed" value="true" />
+      <created>1715594571376</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1715594571376</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Added Elitism variation. Maybe gotta test it but seems fine">
+      <option name="closed" value="true" />
+      <created>1715604736918</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1715604736918</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Added logger and commented some stuff">
+      <option name="closed" value="true" />
+      <created>1715727024420</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1715727024420</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="first steps into framework" />
+    <MESSAGE value="implemented genetic algo tho not sure if its correct" />
+    <MESSAGE value="Implemented some JUnit tests. Found problems. Gotta fix em" />
+    <MESSAGE value="Fixed sorting. The genetic algorithm runs mostly correctly now. Added test of average crossover" />
+    <MESSAGE value="Added Elitism variation. Maybe gotta test it but seems fine" />
+    <MESSAGE value="Added logger and commented some stuff" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added logger and commented some stuff" />
+  </component>
+</project>
