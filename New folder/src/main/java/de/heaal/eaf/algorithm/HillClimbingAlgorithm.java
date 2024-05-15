@@ -25,6 +25,8 @@
 package de.heaal.eaf.algorithm;
 
 import de.heaal.eaf.base.*;
+import de.heaal.eaf.crossover.AverageCrossover;
+import de.heaal.eaf.crossover.SinglePointCrossover;
 import de.heaal.eaf.evaluation.ComparatorIndividual;
 import de.heaal.eaf.mutation.Mutation;
 import de.heaal.eaf.mutation.MutationOptions;
@@ -44,6 +46,7 @@ public class HillClimbingAlgorithm extends Algorithm {
     private final IndividualFactory indFac;
     private final ComparatorIndividual terminationCriterion;
     private final String logFile;
+    private final float mutationsRate;
 
     public HillClimbingAlgorithm(float[] min, float[] max, 
             Comparator<Individual> comparator, Mutation mutator, 
@@ -52,10 +55,15 @@ public class HillClimbingAlgorithm extends Algorithm {
         super(comparator, mutator);
         this.indFac = new ParticleFactory(min, max);
         this.terminationCriterion = terminationCriterion;
+        this.mutationsRate = 1.0f;
 
         // Create the log file
         // ToDo: maybe log the configuration data into the name of logfile aswell
-        this.logFile = createLogFile("data/hca.csv");
+        StringBuilder sb = new StringBuilder();
+        sb.append("data/hca").append("_");
+        sb.append(mutationsRate).append("_");
+        sb.append(".csv");
+        this.logFile = createLogFile(sb.toString());
         if(logFile == null){
             throw new NullPointerException("log file is null");
         }
@@ -70,7 +78,7 @@ public class HillClimbingAlgorithm extends Algorithm {
         // mutating b*
         Individual rndInd = population.get(0).copy();
         MutationOptions opt = new MutationOptions();
-        opt.put(MutationOptions.KEYS.MUTATION_PROBABILITY, 1.f);
+        opt.put(MutationOptions.KEYS.MUTATION_PROBABILITY, mutationsRate);
         mutator.mutate(rndInd, opt);
 
         if(comparator.compare(population.get(0), rndInd) < 0){
