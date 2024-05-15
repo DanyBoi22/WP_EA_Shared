@@ -6,24 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="0708bc9e-9394-4bab-88fb-65a74709b6e2" name="Changes" comment="Added logger and commented some stuff">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/ge_40_avg_0.1_1_true.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/ge_40_avg_0.1_1_true1.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/ge_40_avg_0.1_1_true2.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/ge_40_avg_0.1_1_true3.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/ge_40_avg_0.1_1_true4.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/ge_40_avg_0.1_1_true5.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/ge_40_avg_0.1_1_true6.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/ge_40_avg_0.1_1_true7.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/ge_40_avg_0.1_1_true8.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/ge_40_avg_0.1_1_true9.csv" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/de/heaal/eaf/algorithm/GeneticAlgorithm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/heaal/eaf/algorithm/GeneticAlgorithm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/heaal/eaf/algorithm/HillClimbingAlgorithm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/heaal/eaf/algorithm/HillClimbingAlgorithm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/heaal/eaf/logger/Logger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/heaal/eaf/logger/Logger.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/de/heaal/eaf/testbench/TestGenetic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/heaal/eaf/testbench/TestGenetic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/heaal/eaf/testbench/TestHillClimbing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/heaal/eaf/testbench/TestHillClimbing.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/de/heaal/eaf/algorithm/GeneticAlgorithm.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/de/heaal/eaf/algorithm/GeneticAlgorithm.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/de/heaal/eaf/algorithm/HillClimbingAlgorithm.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/de/heaal/eaf/algorithm/HillClimbingAlgorithm.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/de/heaal/eaf/logger/Logger.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/de/heaal/eaf/logger/Logger.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/de/heaal/eaf/testbench/TestGenetic.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/de/heaal/eaf/testbench/TestGenetic.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/de/heaal/eaf/testbench/TestHillClimbing.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/de/heaal/eaf/testbench/TestHillClimbing.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,7 +78,7 @@
       <recent name="de.heaal.eaf.testbench" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.TestHillClimbing">
+  <component name="RunManager" selected="Application.TestGenetic">
     <configuration name="TestGenetic" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="de.heaal.eaf.testbench.TestGenetic" />
       <module name="EAFramework_SoSe23" />
@@ -160,8 +148,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.TestHillClimbing" />
         <item itemvalue="Application.TestGenetic" />
+        <item itemvalue="Application.TestHillClimbing" />
         <item itemvalue="JUnit.GeneticAlgorithmTest" />
         <item itemvalue="Application.TestRunner" />
         <item itemvalue="Application.main" />
@@ -191,7 +179,7 @@
       <workItem from="1715552250940" duration="16954000" />
       <workItem from="1715704477413" duration="3297000" />
       <workItem from="1715769163886" duration="584000" />
-      <workItem from="1715770516542" duration="4067000" />
+      <workItem from="1715770516542" duration="5630000" />
     </task>
     <task id="LOCAL-00001" summary="first steps into framework">
       <option name="closed" value="true" />

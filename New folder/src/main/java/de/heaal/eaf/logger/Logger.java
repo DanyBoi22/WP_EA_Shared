@@ -40,6 +40,17 @@ public class Logger {
     public static String createLogFile(String filePath) {
         String newFilePath = filePath;
 
+
+        String logFilePath;
+        int separatorIndex = filePath.lastIndexOf("/");
+        logFilePath = filePath.substring(0, separatorIndex);
+
+        // Create the logs directory and intermediate directories if they don't exist
+        File directory = new File(logFilePath);
+        if (!directory.exists()) {
+            directory.mkdirs(); // Create the directory and any necessary parent directories
+        }
+
         // Check if the file already exists
         File file = new File(filePath);
         int counter = 1;
@@ -64,5 +75,34 @@ public class Logger {
         }
 
         return newFilePath;
+        /*
+        String newFilePath = filePath;
+
+        // Check if the file already exists
+        File file = new File(filePath);
+        int counter = 1;
+        while (file.exists()) {
+            // Append counter to the file name
+            int dotIndex = filePath.lastIndexOf(".");
+            if (dotIndex != -1) {
+                newFilePath = filePath.substring(0, dotIndex) + counter + filePath.substring(dotIndex);
+            } else {
+                newFilePath = filePath + counter;
+            }
+            file = new File(newFilePath);
+            counter++;
+        }
+
+        // Create the new file
+        try {
+            file.createNewFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+
+        return newFilePath;
+
+         */
     }
 }

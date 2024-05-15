@@ -76,30 +76,37 @@ public class GeneticAlgorithm extends Algorithm {
         this.useElitism = useElitism;
 
         // Better to be small: [0.05; 0.3], otherwise the algo degenerates to just random search
-        this.mutationRate = 0.1f;
+        this.mutationRate = 0.01f;
         // Better to be small: 1-2
         this.numberElitism = 1;
         // Well... fitness function
         this.fitnessFunction = FitnessPosCoordinates;
 
         // Create the log file with configuration data in the name
-        StringBuilder sb = new StringBuilder();
-        sb.append("data/ge").append("_");
-        sb.append(populationSize).append("_");
+        StringBuilder path = new StringBuilder();
+        path.append("data/");
+
+        StringBuilder name = new StringBuilder();
+        name.append("ge").append("_");
+        name.append(populationSize).append("_");
         if(combination.getClass() == AverageCrossover.class){
-            sb.append("avg");
+            name.append("avg");
         } else if (combination.getClass() == SinglePointCrossover.class) {
-            sb.append("rng");
+            name.append("rng");
         }
-        sb.append("_");
-        sb.append(mutationRate);
+        name.append("_");
+        name.append(mutationRate);
         if(useElitism) {
-            sb.append("_");
-            sb.append(numberElitism).append("_");
-            sb.append(useElitism);
+            name.append("_");
+            name.append(numberElitism).append("_");
+            name.append(useElitism);
         }
-        sb.append(".csv");
-        this.logFile = createLogFile(sb.toString());
+
+        String strName = name.toString();
+
+        path.append(strName).append("/").append(strName).append(".csv");
+
+        this.logFile = createLogFile(path.toString());
         if(logFile == null){
             throw new NullPointerException("log file is null");
         }
