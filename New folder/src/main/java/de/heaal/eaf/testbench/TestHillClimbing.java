@@ -24,6 +24,7 @@
 
 package de.heaal.eaf.testbench;
 
+import de.heaal.eaf.algorithm.GeneticAlgorithm;
 import de.heaal.eaf.algorithm.HillClimbingAlgorithm;
 import de.heaal.eaf.evaluation.ComparatorIndividual;
 import de.heaal.eaf.base.Individual;
@@ -45,8 +46,10 @@ public class TestHillClimbing {
 
         var comparator = new MinimizeFunctionComparator(test.evalAckleyFunc2D);
 
-        var algo = new HillClimbingAlgorithm(min, max,
-                comparator, new RandomMutation(min, max), new ComparatorIndividual(0.001f));
-        algo.run();
+        for(int i = 0; i < 10; i++){
+            var algo = new HillClimbingAlgorithm(min, max,
+                    comparator, new RandomMutation(min, max), new ComparatorIndividual(0.001f));
+            algo.run();
+        }
     }
 }

@@ -92,9 +92,12 @@ public class GeneticAlgorithm extends Algorithm {
             sb.append("rng");
         }
         sb.append("_");
-        sb.append(mutationRate).append("_");
-        sb.append(numberElitism).append("_");
-        sb.append(useElitism);
+        sb.append(mutationRate);
+        if(useElitism) {
+            sb.append("_");
+            sb.append(numberElitism).append("_");
+            sb.append(useElitism);
+        }
         sb.append(".csv");
         this.logFile = createLogFile(sb.toString());
         if(logFile == null){

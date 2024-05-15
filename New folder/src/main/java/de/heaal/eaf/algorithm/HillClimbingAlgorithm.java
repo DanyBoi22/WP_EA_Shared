@@ -61,7 +61,7 @@ public class HillClimbingAlgorithm extends Algorithm {
         // ToDo: maybe log the configuration data into the name of logfile aswell
         StringBuilder sb = new StringBuilder();
         sb.append("data/hca").append("_");
-        sb.append(mutationsRate).append("_");
+        sb.append(mutationsRate);
         sb.append(".csv");
         this.logFile = createLogFile(sb.toString());
         if(logFile == null){

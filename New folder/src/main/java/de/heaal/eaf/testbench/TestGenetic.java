@@ -53,8 +53,10 @@ public class TestGenetic {
         // var combination = new SinglePointCrossover();
         // combination.setRandom(new Random());
 
-        var algo = new GeneticAlgorithm(min, max, 40, combination, true,
-                comparator, new RandomMutation(min, max), new ComparatorIndividual(0.001f));
-        algo.run();
+        for(int i = 0; i < 10; i++){
+            var algo = new GeneticAlgorithm(min, max, 10, combination, true,
+                    comparator, new RandomMutation(min, max), new ComparatorIndividual(0.001f));
+            algo.run();
+        }
     }
 }
