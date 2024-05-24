@@ -35,6 +35,11 @@ import java.util.Random;
 public interface Mutation {
     
     void setRandom(Random rng);
-    
+
+    /**
+     * Mutate a given Individual
+     * @param ind Copy of Individual to mutate
+     * @param opt Mutation Options
+     */
     void mutate(Individual ind, MutationOptions opt);
 }

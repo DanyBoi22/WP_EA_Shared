@@ -35,7 +35,8 @@ import java.util.Map;
 public class MutationOptions {
     public static enum KEYS {
         FEATURE_INDEX,
-        MUTATION_PROBABILITY
+        MUTATION_PROBABILITY,
+        STEPSIZE
     }
     
     private final Map<KEYS, Integer> intOptions = new HashMap<>();

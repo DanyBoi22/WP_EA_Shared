@@ -24,12 +24,13 @@
 
 package de.heaal.eaf.algorithm;
 
-import de.heaal.eaf.base.*;
+import de.heaal.eaf.base.Algorithm;
+import de.heaal.eaf.base.Individual;
+import de.heaal.eaf.base.IndividualFactory;
 import de.heaal.eaf.crossover.AverageCrossover;
 import de.heaal.eaf.crossover.Combination;
 import de.heaal.eaf.crossover.SinglePointCrossover;
 import de.heaal.eaf.evaluation.ComparatorIndividual;
-import de.heaal.eaf.evaluation.MinimizeFunctionComparator;
 import de.heaal.eaf.mutation.Mutation;
 import de.heaal.eaf.mutation.MutationOptions;
 
@@ -48,21 +49,21 @@ import static de.heaal.eaf.selection.SelectionUtils.selectNormal;
  * 
  * @author Christian Lins <christian.lins@haw-hamburg.de>
  */
-public class GeneticAlgorithm extends Algorithm {
+public class DifferentialEvolution extends Algorithm {
 
     private final IndividualFactory indFac;
     private final ComparatorIndividual terminationCriterion;
     private final Combination combination;
     private final int populationSize;
     private final float mutationRate;
-    private final boolean useElitism;
-    private final int numberElitism;
+    private final float stepsize;
+    private final float crossoverRate;
     private final String logFile;
 
 
-    public GeneticAlgorithm(float[] min, float[] max, int populationSize,
-                            Combination combination, boolean useElitism,
-                            Comparator<Individual> comparator, Mutation mutator,  ComparatorIndividual terminationCriterion)
+    public DifferentialEvolution(float[] min, float[] max, int populationSize,
+                                 Combination combination, Comparator<Individual> comparator,
+                                 Mutation mutator, ComparatorIndividual terminationCriterion)
     {
         super(comparator, mutator);
         this.indFac = new ParticleFactory(min, max);
@@ -72,12 +73,13 @@ public class GeneticAlgorithm extends Algorithm {
             throw new IllegalArgumentException("Population size must be greater than 1");
         }
         this.populationSize = populationSize;
-        this.useElitism = useElitism;
 
         // Better to be small: [0.05; 0.3], otherwise the algo degenerates to just random search
         this.mutationRate = 0.01f;
-        // Better to be small: 1-2
-        this.numberElitism = 1;
+        // Stepsize Parameter [0.4; 0.9]
+        this.stepsize = 0.5f;
+        // Crossover Rate [0.1; 1.0]
+        this.crossoverRate = 0.5f;
 
         // Create the log file with configuration data in the name
         StringBuilder path = new StringBuilder();
@@ -92,12 +94,7 @@ public class GeneticAlgorithm extends Algorithm {
             name.append("rng");
         }
         name.append("_");
-        name.append(mutationRate);
-        if(useElitism) {
-            name.append("_");
-            name.append(numberElitism).append("_");
-            name.append(useElitism);
-        }
+        name.append(mutationRate).append("f");
 
         String strName = name.toString();
 
@@ -113,53 +110,19 @@ public class GeneticAlgorithm extends Algorithm {
     public void nextGeneration() {
         super.nextGeneration();
 
-        // Step 1 calculate the fitness of each Parent in the Population
-        // and sort the Population in descending order
-        population.sort(comparator);
+        // For each Individual of the current Population
+        for (int i = 0; i < population.size(); i++) {
+            // Step 1. Create the trial vector by applying mutation
 
-        // Log the fitness of the population
-        logData(logFile);
-
-        // While |Children| < |Parents|
-        List<Individual> children = new ArrayList<>();
-
-        while(children.size() != population.size()) {
-            // Step 2 select a pair of different parents
-            Individual[] parents = new Individual[2];
-            parents[0] = selectNormal(population, new Random(), null);
-            parents[1] = selectNormal(population, new Random(), parents[0]);
-
-            // Step 3 mate the parents
-            children.add(combination.combine(parents));
-        }
-        //Loop
-
-        // Step 4 randomly mutate kids
-        // Only one feature is allowed to mutate
-        MutationOptions opt = new MutationOptions();
-        opt.put(MutationOptions.KEYS.MUTATION_PROBABILITY, mutationRate);
-
-        Individual ind;
-        for(int i = 0; i < population.size(); i++) {
-            ind = children.get(i);
-            mutator.mutate(ind, opt);
-        }
-
-        // Step 5 set the children as the new population and exterminate the parents
-
-        // Step 5.1 Preserve Elite if useElitism is True
-        // Because the parents list is already sorted, all we need to do is choose the first best Individuals
-        int startpoint = useElitism ? numberElitism : 0;
-
-        for(int i = startpoint; i < population.size(); i++) {
-            population.set(i, children.get(i));
+            // Step 2. Create a child by applying crossover
+            // Step 3. Calculate the fitness of the child and the parent Individual and select the fittest
         }
     }
 
     /**
      * Iterates trough population and writes fitness of each individual to the log file
      *
-     * @param logFile
+     * @param logFile name of the log file
      */
     public void logData(String logFile) {
         Float[] data = new Float[population.size()];
