@@ -22,30 +22,45 @@
  * SOFTWARE.
  */
 
-package de.heaal.eaf.mutation;
+package de.heaal.eaf.crossover;
 
 import de.heaal.eaf.base.Individual;
-import de.heaal.eaf.base.Population;
 
 import java.util.Random;
 
-/**
- * Function interface for mutating individuals.
- * 
- * @author Christian Lins <christian.lins@haw-hamburg.de>
- */
-public interface Mutation {
-    
-    void setRandom(Random rng);
+public class DifferentialCrossover implements Combination {
 
-    //void setPopulation(Population population);
+    protected Random rng;
+    protected float crossoverRate;
 
     /**
-     * Mutate a given Individual
-     * @param ind Copy of Individual to mutate
-     * @param opt Mutation Options
+     * CrossoverRate that needs to be set at least once
+     * @param crossoverRate crossoverRate...
      */
-    void mutate(Individual ind, MutationOptions opt);
+    public void setCrossoverRate(float crossoverRate) { this.crossoverRate = crossoverRate; }
 
-    //void mutate(Individual[] inds, MutationOptions opt);
+    @Override
+    public void setRandom(Random rng) {
+        this.rng = rng;
+    }
+
+    @Override
+    public Individual combine(Individual[] parents) {
+        int dim = parents[0].getGenome().len();
+        
+        Individual child = parents[0].copy();
+
+        for(int i = 0; i < dim; i++){
+            if (rng.nextDouble() < crossoverRate || i == rng.nextInt(2)) {
+                // mutated vector
+                child.getGenome().array()[i] = parents[0].getGenome().array()[i];
+            } else {
+                // parent vector
+                child.getGenome().array()[i] = parents[1].getGenome().array()[i];
+            }
+        }
+        
+        return child;
+    }
+    
 }

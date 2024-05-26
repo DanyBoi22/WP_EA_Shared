@@ -12,49 +12,10 @@ import org.junit.Test;
 import java.util.Arrays;
 import java.util.Comparator;
 
-import static de.heaal.eaf.algorithm.GeneticAlgorithm.*;
+import static de.heaal.eaf.testbench.TestFunctions.evalAckleyFunc2D;
 import static org.junit.Assert.*;
 
 public class GeneticAlgorithmTest {
-
-    @Test
-    public void testFitnessFunctionPos() {
-
-        Individual ind = new Particle(new VecN(new float[]{1.0f, 2.0f}));
-        float res1 = FitnessPosCoordinates.apply(ind);
-        assertEquals(3.0f, res1, 0.0001f);
-
-        ind = new Particle(new VecN(new float[]{-1.0f, 3.0f}));
-        float res2 = FitnessPosCoordinates.apply(ind);
-        assertEquals(4.0f, res2, 0.0001f);
-
-        ind = new Particle(new VecN(new float[]{-2.0f, -3.0f}));
-        float res3 = FitnessPosCoordinates.apply(ind);
-        assertEquals(5.0f, res3, 0.0001f);
-
-        ind = new Particle(new VecN(new float[]{0.0f, 0.0f}));
-        float res4 = FitnessPosCoordinates.apply(ind);
-        assertEquals(0.0f, res4, 0.0001f);
-    }
-    @Test
-    public void testFitnessFunctionNeg() {
-
-        Individual ind = new Particle(new VecN(new float[]{1.0f, 2.0f}));
-        float res1 = FitnessNegCoordinates.apply(ind);
-        assertEquals(-3.0f, res1, 0.0001f);
-
-        ind = new Particle(new VecN(new float[]{-1.0f, 3.0f}));
-        float res2 = FitnessNegCoordinates.apply(ind);
-        assertEquals(-4.0f, res2, 0.0001f);
-
-        ind = new Particle(new VecN(new float[]{-1.0f, -4.0f}));
-        float res3 = FitnessNegCoordinates.apply(ind);
-        assertEquals(-5.0f, res3, 0.0001f);
-
-        ind = new Particle(new VecN(new float[]{0.0f, 0.0f}));
-        float res4 = FitnessNegCoordinates.apply(ind);
-        assertEquals(0.0f, res4, 0.0001f);
-    }
 
     /**
      * Test for ensuring that fitness function and sorting of the population work together as intended.
@@ -62,7 +23,7 @@ public class GeneticAlgorithmTest {
      */
     @Test
     public void testPopulationSort() {
-        Comparator<Individual> cmp = new MinimizeFunctionComparator(FitnessPosCoordinates);
+        Comparator<Individual> cmp = new MinimizeFunctionComparator(evalAckleyFunc2D);
         Population pop = new Population(0);
 
         Individual ind1 = new Particle(new VecN(new float[]{0.0f, 1.0f}));

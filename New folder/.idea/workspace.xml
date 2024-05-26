@@ -4,12 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0708bc9e-9394-4bab-88fb-65a74709b6e2" name="Changes" comment="Added logger and commented some stuff">
+    <list default="true" id="0708bc9e-9394-4bab-88fb-65a74709b6e2" name="Changes" comment="Started DE. Wrote code for vector mutation">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/heaal/eaf/algorithm/GeneticAlgorithm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/heaal/eaf/algorithm/GeneticAlgorithm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/heaal/eaf/base/Population.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/heaal/eaf/base/Population.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/heaal/eaf/algorithm/DifferentialEvolution.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/heaal/eaf/algorithm/DifferentialEvolution.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/heaal/eaf/mutation/DifferentialMutation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/heaal/eaf/mutation/RngDifferentialMutation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/de/heaal/eaf/mutation/Mutation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/heaal/eaf/mutation/Mutation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/heaal/eaf/mutation/MutationOptions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/heaal/eaf/mutation/MutationOptions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/heaal/eaf/testbench/TestFunctions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/heaal/eaf/testbench/TestFunctions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/heaal/eaf/unittest/GeneticAlgorithmTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/heaal/eaf/unittest/GeneticAlgorithmTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,33 +51,47 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.HillClimbing.executor&quot;: &quot;Run&quot;,
-    &quot;Application.TestGenetic.executor&quot;: &quot;Run&quot;,
-    &quot;Application.TestHillClimbing.executor&quot;: &quot;Run&quot;,
-    &quot;Application.TestRunner.executor&quot;: &quot;Run&quot;,
-    &quot;Application.main.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.GeneticAlgorithmTest.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;dany&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.HillClimbing.executor": "Run",
+    "Application.TestDifferential.executor": "Run",
+    "Application.TestGenetic.executor": "Run",
+    "Application.TestHillClimbing.executor": "Run",
+    "Application.TestRunner.executor": "Run",
+    "Application.main.executor": "Run",
+    "JUnit.GeneticAlgorithmTest.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "dany",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="de.heaal.eaf.algorithm" />
       <recent name="de.heaal.eaf.crossover" />
       <recent name="de.heaal.eaf.testbench" />
+      <recent name="de.heaal.eaf.algorithm" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.TestGenetic">
+  <component name="RunManager" selected="Application.TestDifferential">
+    <configuration name="TestDifferential" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="de.heaal.eaf.testbench.TestDifferential" />
+      <module name="EAFramework_SoSe23" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="de.heaal.eaf.testbench.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="TestGenetic" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="de.heaal.eaf.testbench.TestGenetic" />
       <module name="EAFramework_SoSe23" />
@@ -116,19 +131,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="A1.main" />
-      <module name="EAFramework_SoSe23" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="A1.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="GeneticAlgorithmTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="EAFramework_SoSe23" />
       <extension name="coverage">
@@ -146,11 +148,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.TestDifferential" />
         <item itemvalue="Application.TestGenetic" />
         <item itemvalue="Application.TestHillClimbing" />
         <item itemvalue="JUnit.GeneticAlgorithmTest" />
         <item itemvalue="Application.TestRunner" />
-        <item itemvalue="Application.main" />
       </list>
     </recent_temporary>
   </component>
@@ -178,7 +180,7 @@
       <workItem from="1715704477413" duration="3297000" />
       <workItem from="1715769163886" duration="584000" />
       <workItem from="1715770516542" duration="8330000" />
-      <workItem from="1716563728140" duration="5533000" />
+      <workItem from="1716563728140" duration="11509000" />
     </task>
     <task id="LOCAL-00001" summary="first steps into framework">
       <option name="closed" value="true" />
@@ -228,7 +230,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715727024420</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Started DE. Wrote code for vector mutation">
+      <option name="closed" value="true" />
+      <created>1716569357828</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1716569357828</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -241,6 +251,7 @@
     <MESSAGE value="Fixed sorting. The genetic algorithm runs mostly correctly now. Added test of average crossover" />
     <MESSAGE value="Added Elitism variation. Maybe gotta test it but seems fine" />
     <MESSAGE value="Added logger and commented some stuff" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added logger and commented some stuff" />
+    <MESSAGE value="Started DE. Wrote code for vector mutation" />
+    <option name="LAST_COMMIT_MESSAGE" value="Started DE. Wrote code for vector mutation" />
   </component>
 </project>

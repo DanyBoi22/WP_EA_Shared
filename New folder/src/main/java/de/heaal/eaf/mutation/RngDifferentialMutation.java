@@ -5,12 +5,12 @@ import de.heaal.eaf.base.Population;
 
 import java.util.Random;
 
-public class DifferentialMutation implements Mutation{
+public class RngDifferentialMutation implements Mutation{
 
     private Random rng;
     private Population population;
 
-    public DifferentialMutation(Random rng) {this.rng = rng;}
+    public RngDifferentialMutation(Random rng) {this.rng = rng;}
 
     /**
      * Has to be set every iteration anew
@@ -25,6 +25,10 @@ public class DifferentialMutation implements Mutation{
 
     @Override
     public void mutate(Individual ind, MutationOptions opt) {
+        if(population == null) {
+            throw new NullPointerException("Population was not set");
+        }
+
         float stepsize = opt.get(MutationOptions.KEYS.STEPSIZE, 0.5f);
 
         int i = population.indexOf(ind);

@@ -33,6 +33,7 @@ import de.heaal.eaf.crossover.SinglePointCrossover;
 import de.heaal.eaf.evaluation.ComparatorIndividual;
 import de.heaal.eaf.mutation.Mutation;
 import de.heaal.eaf.mutation.MutationOptions;
+import de.heaal.eaf.mutation.RngDifferentialMutation;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -55,13 +56,12 @@ public class DifferentialEvolution extends Algorithm {
     private final ComparatorIndividual terminationCriterion;
     private final Combination combination;
     private final int populationSize;
-    private final float mutationRate;
     private final float stepsize;
     private final float crossoverRate;
     private final String logFile;
 
 
-    public DifferentialEvolution(float[] min, float[] max, int populationSize,
+    public DifferentialEvolution(float[] min, float[] max, float stepsize, float crossoverRate, int populationSize,
                                  Combination combination, Comparator<Individual> comparator,
                                  Mutation mutator, ComparatorIndividual terminationCriterion)
     {
@@ -69,32 +69,25 @@ public class DifferentialEvolution extends Algorithm {
         this.indFac = new ParticleFactory(min, max);
         this.terminationCriterion = terminationCriterion;
         this.combination = combination;
-        if(populationSize <= 1) {
-            throw new IllegalArgumentException("Population size must be greater than 1");
+        if(populationSize <= 4) {
+            throw new IllegalArgumentException("Population size must be at least 4");
         }
         this.populationSize = populationSize;
 
-        // Better to be small: [0.05; 0.3], otherwise the algo degenerates to just random search
-        this.mutationRate = 0.01f;
         // Stepsize Parameter [0.4; 0.9]
-        this.stepsize = 0.5f;
+        this.stepsize = stepsize;
         // Crossover Rate [0.1; 1.0]
-        this.crossoverRate = 0.5f;
+        this.crossoverRate = crossoverRate;
 
         // Create the log file with configuration data in the name
         StringBuilder path = new StringBuilder();
         path.append("data/");
 
         StringBuilder name = new StringBuilder();
-        name.append("ge").append("_");
+        name.append("de_rnd_1_bin").append("_");
         name.append(populationSize).append("_");
-        if(combination.getClass() == AverageCrossover.class){
-            name.append("avg");
-        } else if (combination.getClass() == SinglePointCrossover.class) {
-            name.append("rng");
-        }
-        name.append("_");
-        name.append(mutationRate).append("f");
+        name.append(stepsize).append("f_");
+        name.append(crossoverRate).append("f");
 
         String strName = name.toString();
 
@@ -109,13 +102,54 @@ public class DifferentialEvolution extends Algorithm {
     @Override
     public void nextGeneration() {
         super.nextGeneration();
+        // Sort population before?
+        logData(logFile);
 
+        List<Individual> children = new ArrayList<>();
         // For each Individual of the current Population
         for (int i = 0; i < population.size(); i++) {
             // Step 1. Create the trial vector by applying mutation
+            Individual parent =  population.get(i).copy();
+            Individual child = population.get(i).copy();
+            mutate(child);
+            /*
+            MutationOptions opt = new MutationOptions();
+            opt.put(MutationOptions.KEYS.STEPSIZE, stepsize);
+            mutator = mutator.setPopulation(population);
+            mutator.mutate(child, opt);
+            */
 
             // Step 2. Create a child by applying crossover
+            Individual[] parents = new Individual[2];
+            parents[0] = child;
+            parents[1] = parent;
+            child = combination.combine(parents);
+
             // Step 3. Calculate the fitness of the child and the parent Individual and select the fittest
+            if(comparator.compare(child, parent) >= 0) {
+                population.set(i, child);
+            }
+        }
+    }
+
+    private void mutate(Individual ind){
+        int i = population.indexOf(ind);
+        int a, b, c;
+        do {
+            a = rng.nextInt(population.size());
+        } while (a == i);
+        do {
+            b = rng.nextInt(population.size());
+        } while (b == i || b == a);
+        do {
+            c = rng.nextInt(population.size());
+        } while (c == i || c == a || c == b);
+
+        int dim = ind.getGenome().array().length;
+
+        for (int j = 0; j < dim; j++) {
+            ind.getGenome().array()[j] = population.get(a).getGenome().array()[j] +
+                    stepsize * (population.get(b).getGenome().array()[j] + population.get(c).getGenome().array()[j]);
         }
     }
 
