@@ -56,12 +56,16 @@ public class DifferentialEvolution extends Algorithm {
     private final ComparatorIndividual terminationCriterion;
     private final Combination combination;
     private final int populationSize;
+    // Stepsize Parameter [0.4; 0.9]
     private final float stepsize;
+    // Crossover Rate [0.1; 1.0]
     private final float crossoverRate;
+    // Number of differential additions [1;2]
+    private final int numDA;
     private final String logFile;
 
 
-    public DifferentialEvolution(float[] min, float[] max, float stepsize, float crossoverRate, int populationSize,
+    public DifferentialEvolution(float[] min, float[] max, float stepsize, float crossoverRate, int numDA, int populationSize,
                                  Combination combination, Comparator<Individual> comparator,
                                  Mutation mutator, ComparatorIndividual terminationCriterion)
     {
@@ -69,22 +73,25 @@ public class DifferentialEvolution extends Algorithm {
         this.indFac = new ParticleFactory(min, max);
         this.terminationCriterion = terminationCriterion;
         this.combination = combination;
-        if(populationSize <= 4) {
-            throw new IllegalArgumentException("Population size must be at least 4");
+        this.stepsize = stepsize;
+        this.crossoverRate = crossoverRate;
+        if (numDA < 1 || numDA > 2) {
+           throw new IllegalArgumentException("Number ob differential additions can be either 1 or 2");
+        }
+        this.numDA = numDA;
+        if(populationSize <= numDA*2+1) {
+            throw new IllegalArgumentException("Population size is too small for given number of differential additions");
         }
         this.populationSize = populationSize;
-
-        // Stepsize Parameter [0.4; 0.9]
-        this.stepsize = stepsize;
-        // Crossover Rate [0.1; 1.0]
-        this.crossoverRate = crossoverRate;
 
         // Create the log file with configuration data in the name
         StringBuilder path = new StringBuilder();
         path.append("data/");
 
         StringBuilder name = new StringBuilder();
-        name.append("de_rnd_1_bin").append("_");
+        name.append("de_rnd_");
+        name.append(numDA).append("_");
+        name.append("bin_");
         name.append(populationSize).append("_");
         name.append(stepsize).append("f_");
         name.append(crossoverRate).append("f");
@@ -110,20 +117,14 @@ public class DifferentialEvolution extends Algorithm {
         for (int i = 0; i < population.size(); i++) {
             // Step 1. Create the trial vector by applying mutation
             Individual parent =  population.get(i).copy();
-            Individual child = population.get(i).copy();
-            mutate(child);
-            /*
-            MutationOptions opt = new MutationOptions();
-            opt.put(MutationOptions.KEYS.STEPSIZE, stepsize);
-            mutator = mutator.setPopulation(population);
-            mutator.mutate(child, opt);
-            */
+            Individual trial = population.get(i).copy();
+            mutate(trial);
 
             // Step 2. Create a child by applying crossover
             Individual[] parents = new Individual[2];
-            parents[0] = child;
+            parents[0] = trial;
             parents[1] = parent;
-            child = combination.combine(parents);
+            Individual child = combination.combine(parents);
 
             // Step 3. Calculate the fitness of the child and the parent Individual and select the fittest
             if(comparator.compare(child, parent) >= 0) {
@@ -132,24 +133,68 @@ public class DifferentialEvolution extends Algorithm {
         }
     }
 
+    /**
+     * Check if position of candidate is already in list of candidates
+     *
+     * @param parent Position of parent Individual
+     * @param candidates List of positions of candidates
+     * @param candidatePos Position of the candidate to check in candidates list
+     * @return true if position is unique and can be taken as candidate
+     */
+    private boolean isUnique(int parent, int[] candidates, int candidatePos){
+        if (candidates[candidatePos] == parent) {
+           return false;
+        }
+
+        for (int i = 0; i < candidates.length; i++){
+            if (candidates[i] == candidates[candidatePos]) {
+                if(i != candidatePos) {
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
+
+    /**
+     * Adds a single gene of each of 2 candidates and multiplies it by stepsize
+     *
+     * @param stepsize stepsize
+     * @param a position of first candidate
+     * @param b position of second candidate
+     * @param allele gene to add
+     * @return
+     */
+    private float differentialAdditionAllele(float stepsize, int a, int b, int allele) {
+        return stepsize * (population.get(a).getGenome().array()[allele] + population.get(b).getGenome().array()[allele]);
+    }
+
+    /**
+     * Creates a trial vector out of given individual
+     * @param ind individual to mutate
+     */
     private void mutate(Individual ind){
         int i = population.indexOf(ind);
-        int a, b, c;
-        do {
-            a = rng.nextInt(population.size());
-        } while (a == i);
-        do {
-            b = rng.nextInt(population.size());
-        } while (b == i || b == a);
-        do {
-            c = rng.nextInt(population.size());
-        } while (c == i || c == a || c == b);
+        int numCandidates = numDA*2+1;
+        int[] candidates = new int[numCandidates];
+        for (int k = 0; k < numCandidates; k++) {
+            candidates[k] = -1;
+        }
+
+        for(int j = 0; j < numCandidates; j++){
+            do {
+                candidates[j] = rng.nextInt(population.size());
+            } while (!isUnique(i, candidates, j));
+        }
 
         int dim = ind.getGenome().array().length;
 
         for (int j = 0; j < dim; j++) {
-            ind.getGenome().array()[j] = population.get(a).getGenome().array()[j] +
-                    stepsize * (population.get(b).getGenome().array()[j] + population.get(c).getGenome().array()[j]);
+            ind.getGenome().array()[j] = population.get(candidates[0]).getGenome().array()[j] + differentialAdditionAllele(stepsize, candidates[1], candidates[2], j);
+            if (numDA == 2) {
+                ind.getGenome().array()[j] = ind.getGenome().array()[j] + differentialAdditionAllele(stepsize, candidates[3], candidates[4], j);
+            }
         }
     }
 

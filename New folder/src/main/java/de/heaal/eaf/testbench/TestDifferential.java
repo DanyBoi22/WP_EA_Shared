@@ -57,7 +57,7 @@ public class TestDifferential {
         var mutation = new RngDifferentialMutation(new Random());
 
         for(int i = 0; i < 1; i++){
-            var algo = new DifferentialEvolution(min, max, stepsize, crossoverRate, 40, combination,
+            var algo = new DifferentialEvolution(min, max, stepsize, crossoverRate, 1, 40, combination,
                     comparator, mutation, new ComparatorIndividual(0.001f));
             algo.run();
         }

@@ -24,6 +24,8 @@
 
 package de.heaal.eaf.mutation;
 
+import de.heaal.eaf.base.Individual;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -57,6 +59,22 @@ public class MutationOptions {
             return _default;
         }
     }
+
+    /*
+    private final Map<KEYS, Individual[]> indListOptions = new HashMap<>();
+
+    public Individual[] get(KEYS key, Individual[] _default) {
+        if (indListOptions.containsKey(key)) {
+            return indListOptions.get(key);
+        } else {
+            return _default;
+        }
+    }
+
+    public void put(KEYS key, Individual[] value) {
+        indListOptions.put(key, value);
+    }
+    */
     
     public void put(KEYS key, int value) {
         intOptions.put(key, value);
