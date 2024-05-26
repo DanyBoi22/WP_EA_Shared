@@ -48,8 +48,8 @@ public class TestFitting {
 
     public static void main(String[] args) {
         //ToDo: 4D individual. Establish borders
-        float[] min = {-5.12f, -5.12f};
-        float[] max = {+5.12f, +5.12f};
+        float[] min = {-2.f, -2.f, -2.f, -2.f};
+        float[] max = {+2.f, +2.f, +2.f, +2.f};
 
         //Load measurements
         try {
@@ -63,7 +63,7 @@ public class TestFitting {
         var comparator = new MinimizeFunctionComparator(squaredDistancesError);
 
 
-        float stepsize = 0.5f;
+        float stepsize = 0.4f;
         float crossoverRate = 0.5f;
         var combination = new DifferentialCrossover();
         combination.setCrossoverRate(crossoverRate);
@@ -71,8 +71,8 @@ public class TestFitting {
 
         var mutation = new RngDifferentialMutation(new Random());
 
-        var algo = new DifferentialEvolution(min, max, stepsize, crossoverRate, 1, 40, combination,
-                comparator, mutation, new ComparatorIndividual(0.1f));
+        var algo = new DifferentialEvolution(min, max, stepsize, crossoverRate, 1, 10, combination,
+                comparator, mutation, new ComparatorIndividual(7000.f));
         algo.run();
     }
 
@@ -80,8 +80,10 @@ public class TestFitting {
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String line;
             boolean isFirstLine = true;
+            int readlines = 0;
 
-            while ((line = br.readLine()) != null) {
+            // read first 1000 lines of file
+            while ((line = br.readLine()) != null && readlines != 1000) {
                 if (isFirstLine) {
                     isFirstLine = false; // Skip the header line
                     continue;
@@ -90,9 +92,10 @@ public class TestFitting {
                 String[] values = line.split(";");
                 if (values.length >= 5) {
                     float time = Float.parseFloat(values[0].trim());
-                    float accAbs = Float.parseFloat(values[4].trim());
+                    float accAbs = Float.parseFloat(values[4].trim()) - 9.83416414f;
                     timeData.add(time);
                     measurementData.add(accAbs);
+                    readlines++;
                 }
             }
         }

@@ -4,19 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0708bc9e-9394-4bab-88fb-65a74709b6e2" name="Changes" comment="Did a lil bit of refactoring. Looks terrible but works">
+    <list default="true" id="0708bc9e-9394-4bab-88fb-65a74709b6e2" name="Changes" comment="Coded minimising function (Squared Distances Error) for fitting problem and Reading data from csv. Did not test yet">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/de_rnd_1_bin_40_0.5f_0.5f/de_rnd_1_bin_40_0.5f_0.5f.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/de_rnd_1_bin_40_0.5f_0.5f/de_rnd_1_bin_40_0.5f_0.5f1.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/de_rnd_1_bin_40_0.5f_0.5f/de_rnd_1_bin_40_0.5f_0.5f2.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/de_rnd_1_bin_40_0.5f_0.5f/de_rnd_1_bin_40_0.5f_0.5f3.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/de_rnd_1_bin_40_0.5f_0.5f/de_rnd_1_bin_40_0.5f_0.5f4.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/de_rnd_1_bin_40_0.5f_0.5f/de_rnd_1_bin_40_0.5f_0.5f5.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/de_rnd_1_bin_40_0.5f_0.5f/de_rnd_1_bin_40_0.5f_0.5f6.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/de_rnd_1_bin_40_0.5f_0.5f/de_rnd_1_bin_40_0.5f_0.5f7.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/de_rnd_2_bin_40_0.5f_0.5f/de_rnd_2_bin_40_0.5f_0.5f.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/heaal/eaf/testbench/TestDifferential.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/heaal/eaf/testbench/TestDifferential.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/heaal/eaf/testbench/TestGenetic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/heaal/eaf/testbench/TestGenetic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/sensordata.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/sensordata.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/heaal/eaf/testbench/TestFitting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/heaal/eaf/testbench/TestFitting.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/de/heaal/eaf/algorithm/DifferentialEvolution.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/de/heaal/eaf/algorithm/DifferentialEvolution.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/de/heaal/eaf/testbench/TestDifferential.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/de/heaal/eaf/testbench/TestDifferential.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,6 +54,7 @@
   "keyToString": {
     "Application.HillClimbing.executor": "Run",
     "Application.TestDifferential.executor": "Run",
+    "Application.TestFitting.executor": "Run",
     "Application.TestGenetic.executor": "Run",
     "Application.TestHillClimbing.executor": "Run",
     "Application.TestRunner.executor": "Run",
@@ -84,9 +78,22 @@
       <recent name="de.heaal.eaf.algorithm" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.TestDifferential">
+  <component name="RunManager" selected="Application.TestFitting">
     <configuration name="TestDifferential" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="de.heaal.eaf.testbench.TestDifferential" />
+      <module name="EAFramework_SoSe23" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="de.heaal.eaf.testbench.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestFitting" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="de.heaal.eaf.testbench.TestFitting" />
       <module name="EAFramework_SoSe23" />
       <extension name="coverage">
         <pattern>
@@ -124,19 +131,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestRunner" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="de.heaal.eaf.unittest.TestRunner" />
-      <module name="EAFramework_SoSe23" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="de.heaal.eaf.unittest.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="GeneticAlgorithmTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="EAFramework_SoSe23" />
       <extension name="coverage">
@@ -154,11 +148,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.TestFitting" />
         <item itemvalue="Application.TestDifferential" />
         <item itemvalue="Application.TestGenetic" />
         <item itemvalue="Application.TestHillClimbing" />
         <item itemvalue="JUnit.GeneticAlgorithmTest" />
-        <item itemvalue="Application.TestRunner" />
       </list>
     </recent_temporary>
   </component>
@@ -186,7 +180,7 @@
       <workItem from="1715704477413" duration="3297000" />
       <workItem from="1715769163886" duration="584000" />
       <workItem from="1715770516542" duration="8330000" />
-      <workItem from="1716563728140" duration="19909000" />
+      <workItem from="1716563728140" duration="24657000" />
     </task>
     <task id="LOCAL-00001" summary="first steps into framework">
       <option name="closed" value="true" />
@@ -260,7 +254,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716726864359</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Coded minimising function (Squared Distances Error) for fitting problem and Reading data from csv. Did not test yet">
+      <option name="closed" value="true" />
+      <created>1716729968803</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1716729968803</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -276,7 +278,8 @@
     <MESSAGE value="Started DE. Wrote code for vector mutation" />
     <MESSAGE value="DE works good. needs some refactoring tho" />
     <MESSAGE value="Did a lil bit of refactoring. Looks terrible but works" />
-    <option name="LAST_COMMIT_MESSAGE" value="Did a lil bit of refactoring. Looks terrible but works" />
+    <MESSAGE value="Coded minimising function (Squared Distances Error) for fitting problem and Reading data from csv. Did not test yet" />
+    <option name="LAST_COMMIT_MESSAGE" value="Coded minimising function (Squared Distances Error) for fitting problem and Reading data from csv. Did not test yet" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
