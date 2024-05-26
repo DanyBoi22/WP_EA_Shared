@@ -34,7 +34,7 @@ import de.heaal.eaf.crossover.SinglePointCrossover;
 import java.util.Random;
 
 /**
- * Test bench for the Hill Climbing algorithm.
+ * Test bench for the Genetic algorithm.
  * 
  * @author Christian Lins <christian.lins@haw-hamburg.de>
  */

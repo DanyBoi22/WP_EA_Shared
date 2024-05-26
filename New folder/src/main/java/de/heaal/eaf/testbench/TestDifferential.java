@@ -35,8 +35,10 @@ import de.heaal.eaf.mutation.RngDifferentialMutation;
 
 import java.util.Random;
 
+import static de.heaal.eaf.testbench.TestFunctions.evalAckleyFunc2D;
+
 /**
- * Test bench for the Hill Climbing algorithm.
+ * Test bench for the Differential Evolution algorithm.
  * 
  * @author Christian Lins <christian.lins@haw-hamburg.de>
  */
@@ -45,11 +47,11 @@ public class TestDifferential {
         float[] min = {-5.12f, -5.12f};
         float[] max = {+5.12f, +5.12f};
 
-        TestFunctions test = new TestFunctions();
+        var comparator = new MinimizeFunctionComparator(evalAckleyFunc2D);
 
-        var comparator = new MinimizeFunctionComparator(test.evalAckleyFunc2D);
         float stepsize = 0.5f;
         float crossoverRate = 0.5f;
+
         var combination = new DifferentialCrossover();
         combination.setCrossoverRate(crossoverRate);
         combination.setRandom(new Random());

@@ -4,19 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0708bc9e-9394-4bab-88fb-65a74709b6e2" name="Changes" comment="DE works good. needs some refactoring tho">
+    <list default="true" id="0708bc9e-9394-4bab-88fb-65a74709b6e2" name="Changes" comment="Did a lil bit of refactoring. Looks terrible but works">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/heaal/eaf/algorithm/DifferentialEvolution.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/heaal/eaf/algorithm/DifferentialEvolution.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/heaal/eaf/mutation/MutationOptions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/heaal/eaf/mutation/MutationOptions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/de_rnd_1_bin_40_0.5f_0.5f/de_rnd_1_bin_40_0.5f_0.5f.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/de_rnd_1_bin_40_0.5f_0.5f/de_rnd_1_bin_40_0.5f_0.5f1.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/de_rnd_1_bin_40_0.5f_0.5f/de_rnd_1_bin_40_0.5f_0.5f2.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/de_rnd_1_bin_40_0.5f_0.5f/de_rnd_1_bin_40_0.5f_0.5f3.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/de_rnd_1_bin_40_0.5f_0.5f/de_rnd_1_bin_40_0.5f_0.5f4.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/de_rnd_1_bin_40_0.5f_0.5f/de_rnd_1_bin_40_0.5f_0.5f5.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/de_rnd_1_bin_40_0.5f_0.5f/de_rnd_1_bin_40_0.5f_0.5f6.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/de_rnd_1_bin_40_0.5f_0.5f/de_rnd_1_bin_40_0.5f_0.5f7.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/de_rnd_2_bin_40_0.5f_0.5f/de_rnd_2_bin_40_0.5f_0.5f.csv" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/de/heaal/eaf/testbench/TestDifferential.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/heaal/eaf/testbench/TestDifferential.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/de/heaal/eaf/algorithm/GeneticAlgorithm.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/de/heaal/eaf/algorithm/GeneticAlgorithm.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/de/heaal/eaf/base/Population.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/de/heaal/eaf/base/Population.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/de/heaal/eaf/mutation/MutationOptions$KEYS.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/de/heaal/eaf/mutation/MutationOptions$KEYS.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/de/heaal/eaf/mutation/MutationOptions.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/de/heaal/eaf/mutation/MutationOptions.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/de/heaal/eaf/testbench/TestFunctions.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/de/heaal/eaf/testbench/TestFunctions.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/de/heaal/eaf/testbench/TestGenetic.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/de/heaal/eaf/testbench/TestGenetic.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/de/heaal/eaf/testbench/TestHillClimbing.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/de/heaal/eaf/testbench/TestHillClimbing.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/de/heaal/eaf/unittest/GeneticAlgorithmTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/de/heaal/eaf/unittest/GeneticAlgorithmTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/heaal/eaf/testbench/TestGenetic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/heaal/eaf/testbench/TestGenetic.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,8 +79,8 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="de.heaal.eaf.crossover" />
       <recent name="de.heaal.eaf.testbench" />
+      <recent name="de.heaal.eaf.crossover" />
       <recent name="de.heaal.eaf.algorithm" />
     </key>
   </component>
@@ -186,7 +186,7 @@
       <workItem from="1715704477413" duration="3297000" />
       <workItem from="1715769163886" duration="584000" />
       <workItem from="1715770516542" duration="8330000" />
-      <workItem from="1716563728140" duration="16649000" />
+      <workItem from="1716563728140" duration="19909000" />
     </task>
     <task id="LOCAL-00001" summary="first steps into framework">
       <option name="closed" value="true" />
@@ -252,7 +252,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716721431439</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Did a lil bit of refactoring. Looks terrible but works">
+      <option name="closed" value="true" />
+      <created>1716726864359</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1716726864359</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -267,16 +275,12 @@
     <MESSAGE value="Added logger and commented some stuff" />
     <MESSAGE value="Started DE. Wrote code for vector mutation" />
     <MESSAGE value="DE works good. needs some refactoring tho" />
-    <option name="LAST_COMMIT_MESSAGE" value="DE works good. needs some refactoring tho" />
+    <MESSAGE value="Did a lil bit of refactoring. Looks terrible but works" />
+    <option name="LAST_COMMIT_MESSAGE" value="Did a lil bit of refactoring. Looks terrible but works" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/de/heaal/eaf/algorithm/DifferentialEvolution.java</url>
-          <line>119</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
         <breakpoint enabled="true" type="java-exception">
           <properties class="java.lang.ArrayIndexOutOfBoundsException" package="java.lang" />
           <option name="timeStamp" value="4" />
