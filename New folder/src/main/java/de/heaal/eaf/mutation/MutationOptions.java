@@ -24,8 +24,6 @@
 
 package de.heaal.eaf.mutation;
 
-import de.heaal.eaf.base.Individual;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -40,7 +38,8 @@ public class MutationOptions {
         MUTATION_PROBABILITY,
         STEPSIZE,
         NUMDA,
-        VARIATION //1 - rnd, 2 - best
+        TRIAL_VECTOR_VARIATION, //1 - rnd, 2 - best
+        SCALE_FACTOR_VARIATION
     }
     
     private final Map<KEYS, Integer> intOptions = new HashMap<>();

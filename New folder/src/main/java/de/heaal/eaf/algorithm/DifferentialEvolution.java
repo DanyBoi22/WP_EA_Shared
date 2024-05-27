@@ -31,7 +31,6 @@ import de.heaal.eaf.crossover.Combination;
 import de.heaal.eaf.evaluation.ComparatorIndividual;
 import de.heaal.eaf.mutation.Mutation;
 import de.heaal.eaf.mutation.MutationOptions;
-import de.heaal.eaf.mutation.RngDifferentialMutation;
 
 import java.util.*;
 
@@ -56,12 +55,14 @@ public class DifferentialEvolution extends Algorithm {
     // Number of differential additions [1;2]
     private final int numDA;
     // Mutation variation "rnd"/"best"
-    private String variation;
+    private final String trialVectorVariation;
+    private final String scaleFactorVariation;
     private final String logFile;
 
 
     public DifferentialEvolution(float[] min, float[] max, float stepsize, float crossoverRate, int numDA, int populationSize,
-                                 Combination combination, Comparator<Individual> comparator, String variation,
+                                 Combination combination, Comparator<Individual> comparator,
+                                 String trialVectorVariation, String scaleFactorVariation,
                                  Mutation mutator, ComparatorIndividual terminationCriterion)
     {
         super(comparator, mutator);
@@ -78,10 +79,15 @@ public class DifferentialEvolution extends Algorithm {
             throw new IllegalArgumentException("Population size is too small for given number of differential additions");
         }
         this.populationSize = populationSize;
-        if (variation.equals("rnd") || variation.equals("best")) {
-            this.variation = variation;
+        if (trialVectorVariation.equals("rnd") || trialVectorVariation.equals("best")) {
+            this.trialVectorVariation = trialVectorVariation;
         } else {
-           throw new IllegalArgumentException("Mutation variation is not known");
+           throw new IllegalArgumentException("Trial Vector variation is not known");
+        }
+        if (scaleFactorVariation.equals("D") || scaleFactorVariation.equals("J") || scaleFactorVariation.equals("S")) {
+            this.scaleFactorVariation = scaleFactorVariation;
+        } else {
+            throw new IllegalArgumentException("Scale Factor variation is not known");
         }
 
         // Create the log file with configuration data in the name
@@ -90,7 +96,7 @@ public class DifferentialEvolution extends Algorithm {
 
         StringBuilder name = new StringBuilder();
         name.append("de_");
-        name.append(variation).append("_");
+        name.append(trialVectorVariation).append("_");
         name.append(numDA).append("_");
         name.append("bin_");
         name.append(populationSize).append("_");
@@ -117,10 +123,17 @@ public class DifferentialEvolution extends Algorithm {
         MutationOptions opt = new MutationOptions();
         opt.put(MutationOptions.KEYS.STEPSIZE, stepsize);
         opt.put(MutationOptions.KEYS.NUMDA, numDA);
-        if(variation.equals("rnd")) {
-            opt.put(MutationOptions.KEYS.VARIATION, 1);
-        } else if (variation.equals("best")) {
-            opt.put(MutationOptions.KEYS.VARIATION, 2);
+        if(trialVectorVariation.equals("rnd")) {
+            opt.put(MutationOptions.KEYS.TRIAL_VECTOR_VARIATION, 1);
+        } else if (trialVectorVariation.equals("best")) {
+            opt.put(MutationOptions.KEYS.TRIAL_VECTOR_VARIATION, 2);
+        }
+        if(scaleFactorVariation.equals("D")) {
+            opt.put(MutationOptions.KEYS.SCALE_FACTOR_VARIATION, 1);
+        } else if (scaleFactorVariation.equals("J")) {
+            opt.put(MutationOptions.KEYS.SCALE_FACTOR_VARIATION, 2);
+        } else {
+            opt.put(MutationOptions.KEYS.SCALE_FACTOR_VARIATION, 0);
         }
 
 

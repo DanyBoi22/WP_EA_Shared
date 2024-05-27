@@ -25,13 +25,10 @@
 package de.heaal.eaf.testbench;
 
 import de.heaal.eaf.algorithm.DifferentialEvolution;
-import de.heaal.eaf.algorithm.GeneticAlgorithm;
-import de.heaal.eaf.crossover.AverageCrossover;
 import de.heaal.eaf.crossover.DifferentialCrossover;
 import de.heaal.eaf.evaluation.ComparatorIndividual;
 import de.heaal.eaf.evaluation.MinimizeFunctionComparator;
-import de.heaal.eaf.mutation.RandomMutation;
-import de.heaal.eaf.mutation.RngDifferentialMutation;
+import de.heaal.eaf.mutation.DifferentialMutation;
 
 import java.util.Random;
 
@@ -51,17 +48,20 @@ public class TestDifferential {
 
         float stepsize = 0.5f;
         float crossoverRate = 0.5f;
+        int numDA = 1; // 1 or 2
+        String trialVectorVariation = "best"; // "rnd" or "best"
+        String scaleFactorVariation = "J"; // "D" for Dither or "J" for Jitter or "S" for Static
 
         var combination = new DifferentialCrossover();
         combination.setCrossoverRate(crossoverRate);
         combination.setRandom(new Random());
 
-        var mutation = new RngDifferentialMutation(new Random());
+        var mutation = new DifferentialMutation(new Random());
         mutation.setRandom(new Random());
 
         for(int i = 0; i < 10; i++){
-            var algo = new DifferentialEvolution(min, max, stepsize, crossoverRate, 1, 40, combination,
-                    comparator,"best", mutation, new ComparatorIndividual(0.001f));
+            var algo = new DifferentialEvolution(min, max, stepsize, crossoverRate, numDA, 40, combination,
+                    comparator, trialVectorVariation, scaleFactorVariation, mutation, new ComparatorIndividual(0.001f));
             algo.run();
         }
     }

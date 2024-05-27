@@ -29,7 +29,7 @@ import de.heaal.eaf.base.Individual;
 import de.heaal.eaf.crossover.DifferentialCrossover;
 import de.heaal.eaf.evaluation.ComparatorIndividual;
 import de.heaal.eaf.evaluation.MinimizeFunctionComparator;
-import de.heaal.eaf.mutation.RngDifferentialMutation;
+import de.heaal.eaf.mutation.DifferentialMutation;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -65,14 +65,17 @@ public class TestFitting {
 
         float stepsize = 0.4f;
         float crossoverRate = 0.5f;
+        String trialVectorVariation = "best"; // "rnd" or "best"
+        String scaleFactorVariation = "D"; // "D" for Dither or "J" for Jitter or "S" for Static
         var combination = new DifferentialCrossover();
         combination.setCrossoverRate(crossoverRate);
         combination.setRandom(new Random());
 
-        var mutation = new RngDifferentialMutation(new Random());
+        var mutation = new DifferentialMutation(new Random());
+        mutation.setRandom(new Random());
 
-        var algo = new DifferentialEvolution(min, max, stepsize, crossoverRate, 1, 10, combination,
-                comparator,"rnd", mutation, new ComparatorIndividual(7000.f));
+        var algo = new DifferentialEvolution(min, max, stepsize, crossoverRate, 1, 40, combination,
+                comparator, trialVectorVariation, scaleFactorVariation, mutation, new ComparatorIndividual(1000.f));
         algo.run();
     }
 
