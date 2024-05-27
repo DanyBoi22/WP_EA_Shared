@@ -72,7 +72,7 @@ public class TestFitting {
         var mutation = new RngDifferentialMutation(new Random());
 
         var algo = new DifferentialEvolution(min, max, stepsize, crossoverRate, 1, 10, combination,
-                comparator, mutation, new ComparatorIndividual(7000.f));
+                comparator,"rnd", mutation, new ComparatorIndividual(7000.f));
         algo.run();
     }
 

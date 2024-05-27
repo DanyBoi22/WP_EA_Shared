@@ -27,23 +27,16 @@ package de.heaal.eaf.algorithm;
 import de.heaal.eaf.base.Algorithm;
 import de.heaal.eaf.base.Individual;
 import de.heaal.eaf.base.IndividualFactory;
-import de.heaal.eaf.crossover.AverageCrossover;
 import de.heaal.eaf.crossover.Combination;
-import de.heaal.eaf.crossover.SinglePointCrossover;
 import de.heaal.eaf.evaluation.ComparatorIndividual;
 import de.heaal.eaf.mutation.Mutation;
 import de.heaal.eaf.mutation.MutationOptions;
 import de.heaal.eaf.mutation.RngDifferentialMutation;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Random;
-import java.util.function.Function;
+import java.util.*;
 
 import static de.heaal.eaf.logger.Logger.createLogFile;
 import static de.heaal.eaf.logger.Logger.logLineToCSV;
-import static de.heaal.eaf.selection.SelectionUtils.selectNormal;
 
 /**
  * Implementation of the Hill Climbing algorithm.
@@ -62,11 +55,13 @@ public class DifferentialEvolution extends Algorithm {
     private final float crossoverRate;
     // Number of differential additions [1;2]
     private final int numDA;
+    // Mutation variation "rnd"/"best"
+    private String variation;
     private final String logFile;
 
 
     public DifferentialEvolution(float[] min, float[] max, float stepsize, float crossoverRate, int numDA, int populationSize,
-                                 Combination combination, Comparator<Individual> comparator,
+                                 Combination combination, Comparator<Individual> comparator, String variation,
                                  Mutation mutator, ComparatorIndividual terminationCriterion)
     {
         super(comparator, mutator);
@@ -83,13 +78,19 @@ public class DifferentialEvolution extends Algorithm {
             throw new IllegalArgumentException("Population size is too small for given number of differential additions");
         }
         this.populationSize = populationSize;
+        if (variation.equals("rnd") || variation.equals("best")) {
+            this.variation = variation;
+        } else {
+           throw new IllegalArgumentException("Mutation variation is not known");
+        }
 
         // Create the log file with configuration data in the name
         StringBuilder path = new StringBuilder();
         path.append("data/");
 
         StringBuilder name = new StringBuilder();
-        name.append("de_rnd_");
+        name.append("de_");
+        name.append(variation).append("_");
         name.append(numDA).append("_");
         name.append("bin_");
         name.append(populationSize).append("_");
@@ -110,6 +111,7 @@ public class DifferentialEvolution extends Algorithm {
     public void nextGeneration() {
         super.nextGeneration();
         // Sort population before?
+        population.sort(comparator);
         logData(logFile);
 
         List<Individual> children = new ArrayList<>();
@@ -118,7 +120,7 @@ public class DifferentialEvolution extends Algorithm {
             // Step 1. Create the trial vector by applying mutation
             Individual parent =  population.get(i).copy();
             Individual trial = population.get(i).copy();
-            mutate(trial);
+            mutate(trial, variation);
 
             // Step 2. Create a child by applying crossover
             Individual[] parents = new Individual[2];
@@ -174,15 +176,21 @@ public class DifferentialEvolution extends Algorithm {
      * Creates a trial vector out of given individual
      * @param ind individual to mutate
      */
-    private void mutate(Individual ind){
+    private void mutate(Individual ind, String variation){
         int i = population.indexOf(ind);
         int numCandidates = numDA*2+1;
         int[] candidates = new int[numCandidates];
-        for (int k = 0; k < numCandidates; k++) {
-            candidates[k] = -1;
-        }
+        Arrays.fill(candidates, -1);
+        int startpoint = 0;
 
-        for(int j = 0; j < numCandidates; j++){
+        if (Objects.equals(variation, "best")) {
+            candidates[0] = 0;
+            startpoint = 1;
+        } /* else if (Objects.equals(variation, "rnd")) {
+            startpoint = 0;
+        } */
+
+        for(int j = startpoint; j < numCandidates; j++){
             do {
                 candidates[j] = rng.nextInt(population.size());
             } while (!isUnique(i, candidates, j));
@@ -190,6 +198,7 @@ public class DifferentialEvolution extends Algorithm {
 
         int dim = ind.getGenome().array().length;
 
+        // ToDo: Dither and Jitter for stepsize
         for (int j = 0; j < dim; j++) {
             ind.getGenome().array()[j] = population.get(candidates[0]).getGenome().array()[j] + differentialAdditionAllele(stepsize, candidates[1], candidates[2], j);
             if (numDA == 2) {

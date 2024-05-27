@@ -52,7 +52,7 @@ public class DifferentialCrossover implements Combination {
 
         for(int i = 0; i < dim; i++){
             if (rng.nextDouble() < crossoverRate || i == rng.nextInt(2)) {
-                // mutated vector
+                // trial vector
                 child.getGenome().array()[i] = parents[0].getGenome().array()[i];
             } else {
                 // parent vector
