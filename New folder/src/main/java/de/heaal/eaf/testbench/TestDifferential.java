@@ -57,10 +57,11 @@ public class TestDifferential {
         combination.setRandom(new Random());
 
         var mutation = new RngDifferentialMutation(new Random());
+        mutation.setRandom(new Random());
 
         for(int i = 0; i < 10; i++){
             var algo = new DifferentialEvolution(min, max, stepsize, crossoverRate, 1, 40, combination,
-                    comparator,"rnd", mutation, new ComparatorIndividual(0.0001f));
+                    comparator,"best", mutation, new ComparatorIndividual(0.001f));
             algo.run();
         }
     }

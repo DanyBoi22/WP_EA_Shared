@@ -25,6 +25,8 @@
 package de.heaal.eaf.mutation;
 
 import de.heaal.eaf.base.Individual;
+import de.heaal.eaf.base.Population;
+
 import java.util.Random;
 
 /**
@@ -43,6 +45,11 @@ public class RandomMutation implements Mutation {
         
         this.min = min;
         this.max = max;
+    }
+
+    @Override
+    public void setPopulation(Population population){
+        //this function does not do anything in this case
     }
     
     @Override

@@ -110,17 +110,27 @@ public class DifferentialEvolution extends Algorithm {
     @Override
     public void nextGeneration() {
         super.nextGeneration();
-        // Sort population before?
+
         population.sort(comparator);
         logData(logFile);
 
-        List<Individual> children = new ArrayList<>();
+        MutationOptions opt = new MutationOptions();
+        opt.put(MutationOptions.KEYS.STEPSIZE, stepsize);
+        opt.put(MutationOptions.KEYS.NUMDA, numDA);
+        if(variation.equals("rnd")) {
+            opt.put(MutationOptions.KEYS.VARIATION, 1);
+        } else if (variation.equals("best")) {
+            opt.put(MutationOptions.KEYS.VARIATION, 2);
+        }
+
+
         // For each Individual of the current Population
         for (int i = 0; i < population.size(); i++) {
             // Step 1. Create the trial vector by applying mutation
             Individual parent =  population.get(i).copy();
             Individual trial = population.get(i).copy();
-            mutate(trial, variation);
+            mutator.setPopulation(population);
+            mutator.mutate(trial, opt);
 
             // Step 2. Create a child by applying crossover
             Individual[] parents = new Individual[2];
@@ -131,78 +141,6 @@ public class DifferentialEvolution extends Algorithm {
             // Step 3. Calculate the fitness of the child and the parent Individual and select the fittest
             if(comparator.compare(child, parent) >= 0) {
                 population.set(i, child);
-            }
-        }
-    }
-
-    /**
-     * Check if position of candidate is already in list of candidates
-     *
-     * @param parent Position of parent Individual
-     * @param candidates List of positions of candidates
-     * @param candidatePos Position of the candidate to check in candidates list
-     * @return true if position is unique and can be taken as candidate
-     */
-    private boolean isUnique(int parent, int[] candidates, int candidatePos){
-        if (candidates[candidatePos] == parent) {
-           return false;
-        }
-
-        for (int i = 0; i < candidates.length; i++){
-            if (candidates[i] == candidates[candidatePos]) {
-                if(i != candidatePos) {
-                    return false;
-                }
-            }
-        }
-
-        return true;
-    }
-
-    /**
-     * Adds a single gene of each of 2 candidates and multiplies it by stepsize
-     *
-     * @param stepsize stepsize
-     * @param a position of first candidate
-     * @param b position of second candidate
-     * @param allele gene to add
-     * @return
-     */
-    private float differentialAdditionAllele(float stepsize, int a, int b, int allele) {
-        return stepsize * (population.get(a).getGenome().array()[allele] + population.get(b).getGenome().array()[allele]);
-    }
-
-    /**
-     * Creates a trial vector out of given individual
-     * @param ind individual to mutate
-     */
-    private void mutate(Individual ind, String variation){
-        int i = population.indexOf(ind);
-        int numCandidates = numDA*2+1;
-        int[] candidates = new int[numCandidates];
-        Arrays.fill(candidates, -1);
-        int startpoint = 0;
-
-        if (Objects.equals(variation, "best")) {
-            candidates[0] = 0;
-            startpoint = 1;
-        } /* else if (Objects.equals(variation, "rnd")) {
-            startpoint = 0;
-        } */
-
-        for(int j = startpoint; j < numCandidates; j++){
-            do {
-                candidates[j] = rng.nextInt(population.size());
-            } while (!isUnique(i, candidates, j));
-        }
-
-        int dim = ind.getGenome().array().length;
-
-        // ToDo: Dither and Jitter for stepsize
-        for (int j = 0; j < dim; j++) {
-            ind.getGenome().array()[j] = population.get(candidates[0]).getGenome().array()[j] + differentialAdditionAllele(stepsize, candidates[1], candidates[2], j);
-            if (numDA == 2) {
-                ind.getGenome().array()[j] = ind.getGenome().array()[j] + differentialAdditionAllele(stepsize, candidates[3], candidates[4], j);
             }
         }
     }
@@ -235,8 +173,9 @@ public class DifferentialEvolution extends Algorithm {
     @Override
     public void run() {
         initialize(indFac, populationSize);
+        int runaway = 1001;
         int count = 0;
-        while(!isTerminationCondition()) {
+        while(!isTerminationCondition() && count < runaway) {
             System.out.println("Gen: " + count);
             nextGeneration();
             count++;
@@ -245,6 +184,9 @@ public class DifferentialEvolution extends Algorithm {
         population.sort(comparator);
         logData(logFile);
 
+        if (count >= runaway) {
+            System.out.println("The Algorithm is terminated. It is a Runaway");
+        }
         System.out.println("Best Genome: " + population.get(0).getGenome());
         System.out.println("Cache: " + population.get(0).getCache());
 

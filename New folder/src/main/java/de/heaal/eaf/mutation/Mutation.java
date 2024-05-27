@@ -38,7 +38,7 @@ public interface Mutation {
     
     void setRandom(Random rng);
 
-    //void setPopulation(Population population);
+    void setPopulation(Population population);
 
     /**
      * Mutate a given Individual

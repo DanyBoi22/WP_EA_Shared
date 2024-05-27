@@ -38,7 +38,9 @@ public class MutationOptions {
     public static enum KEYS {
         FEATURE_INDEX,
         MUTATION_PROBABILITY,
-        STEPSIZE
+        STEPSIZE,
+        NUMDA,
+        VARIATION //1 - rnd, 2 - best
     }
     
     private final Map<KEYS, Integer> intOptions = new HashMap<>();
