@@ -4,20 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0708bc9e-9394-4bab-88fb-65a74709b6e2" name="Changes" comment="Some more refactoring. ToDo: Dither, Jitter">
+    <list default="true" id="0708bc9e-9394-4bab-88fb-65a74709b6e2" name="Changes" comment="Implemented Dither, Jitter. Done some refactoring and testing. Great test results on sensordata">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/de/heaal/eaf/algorithm/DifferentialEvolution.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/heaal/eaf/algorithm/DifferentialEvolution.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/heaal/eaf/mutation/MutationOptions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/heaal/eaf/mutation/MutationOptions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/heaal/eaf/mutation/RngDifferentialMutation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/heaal/eaf/mutation/DifferentialMutation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/heaal/eaf/mutation/DifferentialMutation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/heaal/eaf/mutation/DifferentialMutation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/de/heaal/eaf/testbench/TestDifferential.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/heaal/eaf/testbench/TestDifferential.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/de/heaal/eaf/testbench/TestFitting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/heaal/eaf/testbench/TestFitting.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/de/heaal/eaf/algorithm/DifferentialEvolution.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/de/heaal/eaf/algorithm/DifferentialEvolution.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/de/heaal/eaf/mutation/Mutation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/de/heaal/eaf/mutation/Mutation.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/de/heaal/eaf/mutation/MutationOptions$KEYS.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/de/heaal/eaf/mutation/MutationOptions$KEYS.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/de/heaal/eaf/mutation/MutationOptions.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/de/heaal/eaf/mutation/MutationOptions.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/de/heaal/eaf/mutation/RandomMutation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/de/heaal/eaf/mutation/RandomMutation.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/de/heaal/eaf/mutation/RngDifferentialMutation.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/de/heaal/eaf/testbench/TestDifferential.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/de/heaal/eaf/testbench/TestDifferential.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/visualising/.ipynb_checkpoints/Fitting-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/visualising/.ipynb_checkpoints/Fitting-checkpoint.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/visualising/Fitting.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/visualising/Fitting.ipynb" afterDir="false" />
     </list>
@@ -88,7 +80,7 @@
       <recent name="de.heaal.eaf.algorithm" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.TestFitting">
+  <component name="RunManager" selected="Application.TestDifferential">
     <configuration name="TestDifferential" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="de.heaal.eaf.testbench.TestDifferential" />
       <module name="EAFramework_SoSe23" />
@@ -158,8 +150,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.TestFitting" />
         <item itemvalue="Application.TestDifferential" />
+        <item itemvalue="Application.TestFitting" />
         <item itemvalue="Application.TestGenetic" />
         <item itemvalue="Application.TestHillClimbing" />
         <item itemvalue="JUnit.GeneticAlgorithmTest" />
@@ -192,7 +184,10 @@
       <workItem from="1715770516542" duration="8330000" />
       <workItem from="1716563728140" duration="24779000" />
       <workItem from="1716760369926" duration="6778000" />
-      <workItem from="1716809898315" duration="5454000" />
+      <workItem from="1716809898315" duration="5586000" />
+      <workItem from="1716836774174" duration="601000" />
+      <workItem from="1716899115706" duration="88000" />
+      <workItem from="1716978410118" duration="3330000" />
     </task>
     <task id="LOCAL-00001" summary="first steps into framework">
       <option name="closed" value="true" />
@@ -298,7 +293,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716801829211</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Implemented Dither, Jitter. Done some refactoring and testing. Great test results on sensordata">
+      <option name="closed" value="true" />
+      <created>1716815520737</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1716815520737</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -318,7 +321,8 @@
     <MESSAGE value="created python plots for testing. the tests are showing very bad results. dont know where the problem lies" />
     <MESSAGE value="added mutation variation (rnd/best). ToDo: Dither, Jitter" />
     <MESSAGE value="Some more refactoring. ToDo: Dither, Jitter" />
-    <option name="LAST_COMMIT_MESSAGE" value="Some more refactoring. ToDo: Dither, Jitter" />
+    <MESSAGE value="Implemented Dither, Jitter. Done some refactoring and testing. Great test results on sensordata" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented Dither, Jitter. Done some refactoring and testing. Great test results on sensordata" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

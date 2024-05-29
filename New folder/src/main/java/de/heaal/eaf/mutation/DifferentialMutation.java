@@ -58,7 +58,7 @@ public class DifferentialMutation implements Mutation{
         float stepsize = opt.get(MutationOptions.KEYS.STEPSIZE, 0.5f);
         int numDA = opt.get(MutationOptions.KEYS.NUMDA, 1);
         int trialVectorVariation = opt.get(MutationOptions.KEYS.TRIAL_VECTOR_VARIATION, 1);
-        int scaleFactorVariation = opt.get(MutationOptions.KEYS.TRIAL_VECTOR_VARIATION, 0);
+        int scaleFactorVariation = opt.get(MutationOptions.KEYS.SCALE_FACTOR_VARIATION, 0);
 
         int posCurrent = population.indexOf(ind);
         int numCandidates = numDA*2+1;

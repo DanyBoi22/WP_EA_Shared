@@ -186,7 +186,7 @@ public class DifferentialEvolution extends Algorithm {
     @Override
     public void run() {
         initialize(indFac, populationSize);
-        int runaway = 1001;
+        int runaway = 2001;
         int count = 0;
         while(!isTerminationCondition() && count < runaway) {
             System.out.println("Gen: " + count);

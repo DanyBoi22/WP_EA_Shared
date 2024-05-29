@@ -59,7 +59,7 @@ public class TestDifferential {
         var mutation = new DifferentialMutation(new Random());
         mutation.setRandom(new Random());
 
-        for(int i = 0; i < 10; i++){
+        for(int i = 0; i < 1; i++){
             var algo = new DifferentialEvolution(min, max, stepsize, crossoverRate, numDA, 40, combination,
                     comparator, trialVectorVariation, scaleFactorVariation, mutation, new ComparatorIndividual(0.001f));
             algo.run();

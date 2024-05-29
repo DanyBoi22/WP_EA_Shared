@@ -47,7 +47,6 @@ public class TestFitting {
     private static List<Float> measurementData = new ArrayList<>();
 
     public static void main(String[] args) {
-        //ToDo: 4D individual. Establish borders
         float[] min = {-2.f, -2.f, -2.f, -2.f};
         float[] max = {+2.f, +2.f, +2.f, +2.f};
 
@@ -66,7 +65,7 @@ public class TestFitting {
         float stepsize = 0.4f;
         float crossoverRate = 0.5f;
         String trialVectorVariation = "best"; // "rnd" or "best"
-        String scaleFactorVariation = "D"; // "D" for Dither or "J" for Jitter or "S" for Static
+        String scaleFactorVariation = "J"; // "D" for Dither or "J" for Jitter or "S" for Static
         var combination = new DifferentialCrossover();
         combination.setCrossoverRate(crossoverRate);
         combination.setRandom(new Random());
@@ -74,7 +73,7 @@ public class TestFitting {
         var mutation = new DifferentialMutation(new Random());
         mutation.setRandom(new Random());
 
-        var algo = new DifferentialEvolution(min, max, stepsize, crossoverRate, 1, 40, combination,
+        var algo = new DifferentialEvolution(min, max, stepsize, crossoverRate, 1, 50, combination,
                 comparator, trialVectorVariation, scaleFactorVariation, mutation, new ComparatorIndividual(1000.f));
         algo.run();
     }
