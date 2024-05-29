@@ -34,7 +34,7 @@ import de.heaal.eaf.crossover.SinglePointCrossover;
 import java.util.Random;
 
 /**
- * Test bench for the Hill Climbing algorithm.
+ * Test bench for the Genetic algorithm.
  * 
  * @author Christian Lins <christian.lins@haw-hamburg.de>
  */
@@ -54,7 +54,7 @@ public class TestGenetic {
         // combination.setRandom(new Random());
 
         for(int i = 0; i < 10; i++){
-            var algo = new GeneticAlgorithm(min, max, 10, combination, true,
+            var algo = new GeneticAlgorithm(min, max, 40, combination, true,
                     comparator, new RandomMutation(min, max), new ComparatorIndividual(0.001f));
             algo.run();
         }

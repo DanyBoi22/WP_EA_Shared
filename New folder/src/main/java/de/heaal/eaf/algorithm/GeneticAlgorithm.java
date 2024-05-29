@@ -57,7 +57,6 @@ public class GeneticAlgorithm extends Algorithm {
     private final float mutationRate;
     private final boolean useElitism;
     private final int numberElitism;
-    private final Function<Individual,Float> fitnessFunction;
     private final String logFile;
 
 
@@ -76,30 +75,35 @@ public class GeneticAlgorithm extends Algorithm {
         this.useElitism = useElitism;
 
         // Better to be small: [0.05; 0.3], otherwise the algo degenerates to just random search
-        this.mutationRate = 0.1f;
+        this.mutationRate = 0.01f;
         // Better to be small: 1-2
         this.numberElitism = 1;
-        // Well... fitness function
-        this.fitnessFunction = FitnessPosCoordinates;
 
         // Create the log file with configuration data in the name
-        StringBuilder sb = new StringBuilder();
-        sb.append("data/ge").append("_");
-        sb.append(populationSize).append("_");
+        StringBuilder path = new StringBuilder();
+        path.append("data/");
+
+        StringBuilder name = new StringBuilder();
+        name.append("ge").append("_");
+        name.append(populationSize).append("_");
         if(combination.getClass() == AverageCrossover.class){
-            sb.append("avg");
+            name.append("avg");
         } else if (combination.getClass() == SinglePointCrossover.class) {
-            sb.append("rng");
+            name.append("rng");
         }
-        sb.append("_");
-        sb.append(mutationRate);
+        name.append("_");
+        name.append(mutationRate);
         if(useElitism) {
-            sb.append("_");
-            sb.append(numberElitism).append("_");
-            sb.append(useElitism);
+            name.append("_");
+            name.append(numberElitism).append("_");
+            name.append(useElitism);
         }
-        sb.append(".csv");
-        this.logFile = createLogFile(sb.toString());
+
+        String strName = name.toString();
+
+        path.append(strName).append("/").append(strName).append(".csv");
+
+        this.logFile = createLogFile(path.toString());
         if(logFile == null){
             throw new NullPointerException("log file is null");
         }
@@ -111,7 +115,6 @@ public class GeneticAlgorithm extends Algorithm {
 
         // Step 1 calculate the fitness of each Parent in the Population
         // and sort the Population in descending order
-        //Comparator<Individual> cmp = new MinimizeFunctionComparator(fitnessFunction);
         population.sort(comparator);
 
         // Log the fitness of the population
@@ -126,7 +129,7 @@ public class GeneticAlgorithm extends Algorithm {
             parents[0] = selectNormal(population, new Random(), null);
             parents[1] = selectNormal(population, new Random(), parents[0]);
 
-            // Step 3 mate the parent
+            // Step 3 mate the parents
             children.add(combination.combine(parents));
         }
         //Loop
@@ -162,32 +165,9 @@ public class GeneticAlgorithm extends Algorithm {
         Float[] data = new Float[population.size()];
         for(int i = 0; i < population.size(); i++) {
             data[i] = population.get(i).getCache();
-            //data[i] = fitnessFunction.apply(population.get(i));
         }
         logLineToCSV(data,logFile);
     }
-
-    /**
-     * Fitness Functions.
-     * If we are trying to maximize f(x), then we calculate the fitness of each xi
-     * by computing f(xi). -> |x| + |y|
-     * If we are trying to minimize f(x), then we calculate the fitness of each xi
-     * by computing the negative of f(xi). -> -|x| - |y|; alternatively 1/|x| + 1/|x| (watch out for zero division)
-     * But because we are using minimising Comparator to sort the population we need to solve a maximization problem
-     */
-    public static Function<Individual, Float> FitnessPosCoordinates = (x) -> {
-        float x1 = x.getGenome().array()[0] < 0 ? -x.getGenome().array()[0] : x.getGenome().array()[0];
-        float x2 = x.getGenome().array()[1] < 0 ? -x.getGenome().array()[1] : x.getGenome().array()[1];
-        return x1 + x2;};
-
-    public static Function<Individual, Float> FitnessNegCoordinates = (x) -> {
-        float x1 = x.getGenome().array()[0] > 0 ? -x.getGenome().array()[0] : x.getGenome().array()[0];
-        float x2 = x.getGenome().array()[1] > 0 ? -x.getGenome().array()[1] : x.getGenome().array()[1];
-        return x1 + x2;};
-
-    public static Function<Individual, Float> FitnessPosY = (x) -> x.getCache();
-
-    public static Function<Individual, Float> FitnessNegY = (x) -> -x.getCache();
   
     @Override
     public boolean isTerminationCondition() {
@@ -211,7 +191,6 @@ public class GeneticAlgorithm extends Algorithm {
             count++;
         }
 
-        //Comparator<Individual> cmp = new MinimizeFunctionComparator(fitnessFunction);
         population.sort(comparator);
         logData(logFile);
 

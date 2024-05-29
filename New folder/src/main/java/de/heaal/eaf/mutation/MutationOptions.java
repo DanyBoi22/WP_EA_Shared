@@ -35,7 +35,11 @@ import java.util.Map;
 public class MutationOptions {
     public static enum KEYS {
         FEATURE_INDEX,
-        MUTATION_PROBABILITY
+        MUTATION_PROBABILITY,
+        STEPSIZE,
+        NUMDA,
+        TRIAL_VECTOR_VARIATION, //1 - rnd, 2 - best
+        SCALE_FACTOR_VARIATION
     }
     
     private final Map<KEYS, Integer> intOptions = new HashMap<>();
@@ -56,6 +60,22 @@ public class MutationOptions {
             return _default;
         }
     }
+
+    /*
+    private final Map<KEYS, Individual[]> indListOptions = new HashMap<>();
+
+    public Individual[] get(KEYS key, Individual[] _default) {
+        if (indListOptions.containsKey(key)) {
+            return indListOptions.get(key);
+        } else {
+            return _default;
+        }
+    }
+
+    public void put(KEYS key, Individual[] value) {
+        indListOptions.put(key, value);
+    }
+    */
     
     public void put(KEYS key, int value) {
         intOptions.put(key, value);

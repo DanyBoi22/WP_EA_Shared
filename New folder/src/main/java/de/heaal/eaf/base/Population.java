@@ -72,6 +72,8 @@ public class Population implements Iterable<Individual> {
     public Individual get(int idx) {
         return individuals.get(idx);
     }
+
+    public int indexOf(Individual ind) { return individuals.indexOf(ind); }
     
     /**
      * Returns a copy of this population individuals list.

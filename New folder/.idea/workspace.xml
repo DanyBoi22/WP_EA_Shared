@@ -4,26 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0708bc9e-9394-4bab-88fb-65a74709b6e2" name="Changes" comment="Added logger and commented some stuff">
+    <list default="true" id="0708bc9e-9394-4bab-88fb-65a74709b6e2" name="Changes" comment="Implemented Dither, Jitter. Done some refactoring and testing. Great test results on sensordata">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/ge_40_avg_0.1_1_true.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/ge_40_avg_0.1_1_true1.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/ge_40_avg_0.1_1_true2.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/ge_40_avg_0.1_1_true3.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/ge_40_avg_0.1_1_true4.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/ge_40_avg_0.1_1_true5.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/ge_40_avg_0.1_1_true6.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/ge_40_avg_0.1_1_true7.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/ge_40_avg_0.1_1_true8.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/ge_40_avg_0.1_1_true9.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/heaal/eaf/algorithm/GeneticAlgorithm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/heaal/eaf/algorithm/GeneticAlgorithm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/heaal/eaf/algorithm/HillClimbingAlgorithm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/heaal/eaf/algorithm/HillClimbingAlgorithm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/heaal/eaf/testbench/TestGenetic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/heaal/eaf/testbench/TestGenetic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/de/heaal/eaf/testbench/TestHillClimbing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/heaal/eaf/testbench/TestHillClimbing.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/de/heaal/eaf/algorithm/GeneticAlgorithm.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/de/heaal/eaf/algorithm/GeneticAlgorithm.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/de/heaal/eaf/algorithm/HillClimbingAlgorithm.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/de/heaal/eaf/algorithm/HillClimbingAlgorithm.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/de/heaal/eaf/testbench/TestGenetic.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/de/heaal/eaf/testbench/TestGenetic.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/de/heaal/eaf/testbench/TestHillClimbing.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/de/heaal/eaf/testbench/TestHillClimbing.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/heaal/eaf/algorithm/DifferentialEvolution.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/heaal/eaf/algorithm/DifferentialEvolution.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/heaal/eaf/mutation/DifferentialMutation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/heaal/eaf/mutation/DifferentialMutation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/heaal/eaf/testbench/TestDifferential.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/heaal/eaf/testbench/TestDifferential.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/de/heaal/eaf/testbench/TestFitting.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/de/heaal/eaf/testbench/TestFitting.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/visualising/.ipynb_checkpoints/Fitting-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/visualising/.ipynb_checkpoints/Fitting-checkpoint.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/visualising/Fitting.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/visualising/Fitting.ipynb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,12 +34,12 @@
     &quot;assignee&quot;: &quot;DanyBoi22&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/DanyBoi22/WP_EA_Shared.git",
-    "accountId": "9a36aab8-10a0-4b01-a0c5-a018c431c14a"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/DanyBoi22/WP_EA_Shared.git&quot;,
+    &quot;accountId&quot;: &quot;9a36aab8-10a0-4b01-a0c5-a018c431c14a&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 0
@@ -64,33 +52,61 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.HillClimbing.executor": "Run",
-    "Application.TestGenetic.executor": "Run",
-    "Application.TestHillClimbing.executor": "Run",
-    "Application.TestRunner.executor": "Run",
-    "Application.main.executor": "Run",
-    "JUnit.GeneticAlgorithmTest.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "dany",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.HillClimbing.executor&quot;: &quot;Run&quot;,
+    &quot;Application.TestDifferential.executor&quot;: &quot;Run&quot;,
+    &quot;Application.TestFitting.executor&quot;: &quot;Run&quot;,
+    &quot;Application.TestGenetic.executor&quot;: &quot;Run&quot;,
+    &quot;Application.TestHillClimbing.executor&quot;: &quot;Run&quot;,
+    &quot;Application.TestRunner.executor&quot;: &quot;Run&quot;,
+    &quot;Application.main.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.GeneticAlgorithmTest.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;dany&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="de.heaal.eaf.testbench" />
       <recent name="de.heaal.eaf.crossover" />
       <recent name="de.heaal.eaf.algorithm" />
-      <recent name="de.heaal.eaf.testbench" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.TestHillClimbing">
+  <component name="RunManager" selected="Application.TestDifferential">
+    <configuration name="TestDifferential" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="de.heaal.eaf.testbench.TestDifferential" />
+      <module name="EAFramework_SoSe23" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="de.heaal.eaf.testbench.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestFitting" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="de.heaal.eaf.testbench.TestFitting" />
+      <module name="EAFramework_SoSe23" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="de.heaal.eaf.testbench.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="TestGenetic" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="de.heaal.eaf.testbench.TestGenetic" />
       <module name="EAFramework_SoSe23" />
@@ -117,32 +133,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestRunner" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="de.heaal.eaf.unittest.TestRunner" />
-      <module name="EAFramework_SoSe23" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="de.heaal.eaf.unittest.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="A1.main" />
-      <module name="EAFramework_SoSe23" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="A1.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="GeneticAlgorithmTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="EAFramework_SoSe23" />
       <extension name="coverage">
@@ -160,11 +150,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.TestHillClimbing" />
+        <item itemvalue="Application.TestDifferential" />
+        <item itemvalue="Application.TestFitting" />
         <item itemvalue="Application.TestGenetic" />
+        <item itemvalue="Application.TestHillClimbing" />
         <item itemvalue="JUnit.GeneticAlgorithmTest" />
-        <item itemvalue="Application.TestRunner" />
-        <item itemvalue="Application.main" />
       </list>
     </recent_temporary>
   </component>
@@ -191,7 +181,13 @@
       <workItem from="1715552250940" duration="16954000" />
       <workItem from="1715704477413" duration="3297000" />
       <workItem from="1715769163886" duration="584000" />
-      <workItem from="1715770516542" duration="4067000" />
+      <workItem from="1715770516542" duration="8330000" />
+      <workItem from="1716563728140" duration="24779000" />
+      <workItem from="1716760369926" duration="6778000" />
+      <workItem from="1716809898315" duration="5586000" />
+      <workItem from="1716836774174" duration="601000" />
+      <workItem from="1716899115706" duration="88000" />
+      <workItem from="1716978410118" duration="3330000" />
     </task>
     <task id="LOCAL-00001" summary="first steps into framework">
       <option name="closed" value="true" />
@@ -241,7 +237,71 @@
       <option name="project" value="LOCAL" />
       <updated>1715727024420</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Started DE. Wrote code for vector mutation">
+      <option name="closed" value="true" />
+      <created>1716569357828</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1716569357828</updated>
+    </task>
+    <task id="LOCAL-00008" summary="DE works good. needs some refactoring tho">
+      <option name="closed" value="true" />
+      <created>1716721431439</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1716721431439</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Did a lil bit of refactoring. Looks terrible but works">
+      <option name="closed" value="true" />
+      <created>1716726864359</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1716726864359</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Coded minimising function (Squared Distances Error) for fitting problem and Reading data from csv. Did not test yet">
+      <option name="closed" value="true" />
+      <created>1716729968803</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1716729968803</updated>
+    </task>
+    <task id="LOCAL-00011" summary="created python plots for testing. the tests are showing very bad results. dont know where the problem lies">
+      <option name="closed" value="true" />
+      <created>1716736794865</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1716736794865</updated>
+    </task>
+    <task id="LOCAL-00012" summary="added mutation variation (rnd/best). ToDo: Dither, Jitter">
+      <option name="closed" value="true" />
+      <created>1716797277056</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1716797277056</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Some more refactoring. ToDo: Dither, Jitter">
+      <option name="closed" value="true" />
+      <created>1716801829211</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1716801829211</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Implemented Dither, Jitter. Done some refactoring and testing. Great test results on sensordata">
+      <option name="closed" value="true" />
+      <created>1716815520737</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1716815520737</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -254,6 +314,24 @@
     <MESSAGE value="Fixed sorting. The genetic algorithm runs mostly correctly now. Added test of average crossover" />
     <MESSAGE value="Added Elitism variation. Maybe gotta test it but seems fine" />
     <MESSAGE value="Added logger and commented some stuff" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added logger and commented some stuff" />
+    <MESSAGE value="Started DE. Wrote code for vector mutation" />
+    <MESSAGE value="DE works good. needs some refactoring tho" />
+    <MESSAGE value="Did a lil bit of refactoring. Looks terrible but works" />
+    <MESSAGE value="Coded minimising function (Squared Distances Error) for fitting problem and Reading data from csv. Did not test yet" />
+    <MESSAGE value="created python plots for testing. the tests are showing very bad results. dont know where the problem lies" />
+    <MESSAGE value="added mutation variation (rnd/best). ToDo: Dither, Jitter" />
+    <MESSAGE value="Some more refactoring. ToDo: Dither, Jitter" />
+    <MESSAGE value="Implemented Dither, Jitter. Done some refactoring and testing. Great test results on sensordata" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented Dither, Jitter. Done some refactoring and testing. Great test results on sensordata" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.ArrayIndexOutOfBoundsException" package="java.lang" />
+          <option name="timeStamp" value="4" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

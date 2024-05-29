@@ -25,6 +25,8 @@
 package de.heaal.eaf.mutation;
 
 import de.heaal.eaf.base.Individual;
+import de.heaal.eaf.base.Population;
+
 import java.util.Random;
 
 /**
@@ -35,6 +37,15 @@ import java.util.Random;
 public interface Mutation {
     
     void setRandom(Random rng);
-    
+
+    void setPopulation(Population population);
+
+    /**
+     * Mutate a given Individual
+     * @param ind Copy of Individual to mutate
+     * @param opt Mutation Options
+     */
     void mutate(Individual ind, MutationOptions opt);
+
+    //void mutate(Individual[] inds, MutationOptions opt);
 }

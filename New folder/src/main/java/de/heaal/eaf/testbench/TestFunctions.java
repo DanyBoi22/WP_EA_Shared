@@ -7,7 +7,7 @@ import java.util.function.Function;
 public class TestFunctions {
 
     // Sphere Function n=2
-    public Function<Individual,Float> evalSphereFunc2D =
+    public static Function<Individual,Float> evalSphereFunc2D =
             (ind) -> {
                 var x0 = ind.getGenome().array()[0];
                 var x1 = ind.getGenome().array()[1];
@@ -15,7 +15,7 @@ public class TestFunctions {
             };
 
     // Ackley Function n=2
-    public Function<Individual,Float> evalAckleyFunc2D =
+    public static Function<Individual,Float> evalAckleyFunc2D =
             (ind) -> {
                 var x = ind.getGenome().array();
 
