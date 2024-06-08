@@ -215,7 +215,9 @@ class Agent:
             steps += 1
 
         # fitness calculation
-        self.fitness = self._get_distance() + (steps * 0.1)
+        diagonale = math.sqrt(MAP_SIZE**2 + MAP_SIZE**2)
+
+        self.fitness = (1/(self._get_distance()+1))*0.5 + (100/steps)*0.5
 
         return 
 
@@ -259,7 +261,7 @@ stats = neat.StatisticsReporter()
 p.add_reporter(stats)
 
 # Run until a solution is found.
-winner = p.run(eval_genomes, 100) # up to X generations
+winner = p.run(eval_genomes, 10) # up to X generations
 
 visualize.draw_net(config, winner, True)
 visualize.draw_net(config, winner, True, prune_unused=True)
