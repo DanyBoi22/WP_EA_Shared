@@ -215,9 +215,10 @@ class Agent:
             steps += 1
 
         # fitness calculation
-        diagonale = math.sqrt(MAP_SIZE**2 + MAP_SIZE**2)
-
-        self.fitness = (1/(self._get_distance()+1))*0.5 + (100/steps)*0.5
+        if(self.goal_reached()):
+            self.fitness = 100    
+        else:
+            self.fitness = 1/(self._get_distance() + steps)
 
         return 
 
