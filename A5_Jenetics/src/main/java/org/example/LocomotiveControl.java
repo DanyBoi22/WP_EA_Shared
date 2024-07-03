@@ -47,12 +47,7 @@ public class LocomotiveControl {
             {-0.9, -6.2460}
     };
 
-    double simulateTrain(final ProgramGene<Double> program) {
-
-    }
-
-    static double error(final ProgramGene<Double> program) {
-
+    static double simulateTrain(final ProgramGene<Double> program) {
         //TODO LocomotiveControl loop
         final double stationDistance = 1000;
         double drivenDistance = 0;
@@ -74,6 +69,13 @@ public class LocomotiveControl {
 
         double error = abs(drivenDistance - stationDistance)*0.1 + energy*0.00 + time*0.0000 + program.size()*0.001;
         System.out.println("dist to station: " + (drivenDistance - stationDistance) + " error: " + error);
+
+        return error;
+    }
+
+    static double error(final ProgramGene<Double> program) {
+
+        double error = simulateTrain(program);
 
         return error;
     }
