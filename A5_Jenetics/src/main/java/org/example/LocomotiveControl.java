@@ -10,10 +10,7 @@ import io.jenetics.ext.SingleNodeCrossover;
 import io.jenetics.ext.util.TreeNode;
 import io.jenetics.prog.ProgramChromosome;
 import io.jenetics.prog.ProgramGene;
-import io.jenetics.prog.op.MathExpr;
-import io.jenetics.prog.op.MathOp;
-import io.jenetics.prog.op.Op;
-import io.jenetics.prog.op.Var;
+import io.jenetics.prog.op.*;
 import io.jenetics.util.ISeq;
 
 @SuppressWarnings({"rawtypes", "unchecked"})
@@ -22,7 +19,8 @@ public class LocomotiveControl {
     static final ISeq<Op<Double>> OPERATIONS = ISeq.of(
             MathOp.ADD,
             MathOp.SUB,
-            MathOp.MUL
+            MathOp.MUL,
+            MathOp.DIV
     );
 
     static final ISeq<Op<Double>> TERMINALS = ISeq.of(
@@ -31,7 +29,11 @@ public class LocomotiveControl {
             //Distance Traveled
             Var.of("dt", 1),
             //Distance to station
-            Var.of("ds", 2)
+            Var.of("ds", 2),
+            EphemeralConst.of(Math::random),
+            Const.of("c1", 1.0),
+            Const.of("c2", 2.0),
+            Const.of("c3", 3.0)
     );
 
     static final ProgramChromosome<Double> PROGRAM =
@@ -58,7 +60,7 @@ public class LocomotiveControl {
         final double MAX_ENERGY = 1574800; //Math.pow(MAX_VELOCITY * MAX_SIM_STEPS, 2);
 
         //TODO LocomotiveControl loop
-        final double stationDistance = 500;
+        final double stationDistance = 1000;
         double drivenDistance = 0;
         double energy = 0;
         double velocity = 0;
@@ -67,11 +69,11 @@ public class LocomotiveControl {
         for (int simStep = 0; simStep < MAX_SIM_STEPS; simStep++) {
             double new_speed = program.eval(velocity, drivenDistance, stationDistance);
 
-            energy += new_speed * new_speed;
-
             if (new_speed > MAX_VELOCITY) {
                 new_speed = MAX_VELOCITY;
             }
+
+            energy += Math.pow(new_speed, 2);
 
             velocity += new_speed;
 
@@ -93,11 +95,11 @@ public class LocomotiveControl {
         }
 
         double error =
-                Math.pow(((drivenDistance - stationDistance) / stationDistance)*1.0, 2) +
-                Math.pow(((velocity / MAX_VELOCITY) * 2.0), 2) +
-                Math.pow(energy/MAX_ENERGY, 2) * 0.0000000000 +
-                steps * 10.0 +
-                program.size() * 0.001;
+                Math.pow(((drivenDistance - stationDistance)), 2) * 1.0 +
+                Math.pow(((velocity)), 2) * 100.0 +
+                Math.pow(energy, 2) * 0.5 +
+                steps * 100.0 +
+                program.size() * 0.000;
 
         if (printProgress) {
             System.out.println("dist to station: " + (drivenDistance - stationDistance) + " steps: " + steps + " energy: " + energy + " error: " + error);
@@ -122,7 +124,7 @@ public class LocomotiveControl {
                 )
                 .minimizing()
                 .alterers(
-                        new MultiPointCrossover<>(),
+                        new SingleNodeCrossover<>(),
                         new Mutator<>())
                 .build();
 
